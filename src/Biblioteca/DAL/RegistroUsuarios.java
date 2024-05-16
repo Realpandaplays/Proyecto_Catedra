@@ -48,7 +48,7 @@ public class RegistroUsuarios {
          return rowInserted;
     }
     
-    //Localizar usuario por carnet (identificacion)
+    //Login
     
     public boolean LocalizarUser (String identificacion, String clave){
         boolean encontrado = false;
@@ -70,6 +70,35 @@ public class RegistroUsuarios {
             Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
     }
     return encontrado;
+    }
+    
+    //Seleccionar privilegio para login
+    
+    public Usuarios SelecPriv (String identificacion, String clave){
+        Usuarios rol = null;
+        
+        try {
+            String sql = "SELECT `privilegio` FROM `usuarios` WHERE `identificacion`='"+identificacion+"' AND `clave`='"+clave+"'";
+            
+            java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, identificacion);
+            statement.setString(1,clave);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()){
+                
+                String privilegio = resultSet.getString("privilegio");
+                
+                rol = new Usuarios (privilegio);
+            }
+            resultSet.close();
+            statement.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rol;
+        
     }
     
     //Restablecer contraseña 
@@ -102,7 +131,7 @@ public class RegistroUsuarios {
         boolean encontrado = false;
         
         try {
-            String sql = "SELECT * FROM usuarios WHERE identificacion = ? AND nacimiento = ?";
+            String sql = "SELECT nacimiento FROM usuarios WHERE identificacion = ? AND nacimiento = ?";
             java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, identificacion);
             statement.setString(2, nacimiento);

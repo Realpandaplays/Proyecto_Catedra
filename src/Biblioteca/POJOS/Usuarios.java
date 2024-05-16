@@ -82,5 +82,15 @@ public class Usuarios {
         this.privilegio = privilegio;
     }
     
+    public Usuarios(String rol){
+        this.privilegio=rol;
+    }
     
+    public String getRol() {
+        return privilegio;
+    }
+    
+    public void setRol(String rol) {
+        this.privilegio = rol;
+    }
 }

@@ -2,6 +2,7 @@ package Biblioteca.GUI;
 
 import Biblioteca.DAL.ConexionMySQL;
 import Biblioteca.DAL.RegistroUsuarios;
+import Biblioteca.POJOS.Usuarios;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -16,7 +17,13 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 public class Inicio extends javax.swing.JFrame {
     
     private RegistroUsuarios usuariologin = new RegistroUsuarios ((Connection) ConexionMySQL.obtenerConexion());
+    private Usuarios privi = null;
+    
+    private void cargarCajas(Usuarios privi) {
 
+       txtPrivi.setText(privi.getPrivilegio());
+
+    }
     public Inicio() {
         initComponents();
     }
@@ -45,6 +52,7 @@ public class Inicio extends javax.swing.JFrame {
         pnlRegistrar = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JLabel();
         txtClave = new javax.swing.JPasswordField();
+        txtPrivi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -280,6 +288,9 @@ public class Inicio extends javax.swing.JFrame {
         txtClave.setText("jPasswordField1");
         txtClave.setBorder(null);
 
+        txtPrivi.setForeground(new java.awt.Color(0, 0, 0));
+        txtPrivi.setPreferredSize(new java.awt.Dimension(20, 20));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -313,7 +324,9 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(174, 174, 174)
+                                .addGap(33, 33, 33)
+                                .addComponent(txtPrivi, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
                                 .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(31, 31, 31))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -337,18 +350,23 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtClave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(8, 8, 8)))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
-                .addGap(31, 31, 31))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(8, 8, 8)))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                            .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                        .addGap(31, 31, 31))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(txtPrivi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout pnlBgLayout = new javax.swing.GroupLayout(pnlBg);
@@ -504,7 +522,21 @@ public class Inicio extends javax.swing.JFrame {
                     + "\n Imposible encontrarlo",
                     "Error", JOptionPane.ERROR_MESSAGE);
                 } else{
-                        
+                     privi= usuariologin.SelecPriv(txtIdentificacion.getText().trim() , txtClave.getText().trim());
+                     cargarCajas(privi);
+                     if(txtPrivi.getText().trim()=="Administrador"){
+                         Principal_Admin admin = new Principal_Admin();
+                         admin.setVisible(true);
+                         this.dispose();
+                     } else if (txtPrivi.getText().trim()=="Profesor"){
+                         Principal_Profesor profe = new Principal_Profesor();
+                         profe.setVisible(true);
+                         this.dispose();
+                     } else {
+                         Principal_Estudiante alumno = new Principal_Estudiante();
+                         alumno.setVisible(true);
+                         this.dispose();
+                     }
                 }
     }//GEN-LAST:event_btnIngresarMouseClicked
 
@@ -516,9 +548,7 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxMostrarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -572,5 +602,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlSalir;
     private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JLabel txtPrivi;
     // End of variables declaration//GEN-END:variables
 }
