@@ -66,6 +66,9 @@
               <Color blue="ad" green="8b" red="58" type="rgb"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlMenuMouseEntered"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -75,7 +78,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="pnlConsultarMaterial" alignment="0" max="32767" attributes="0"/>
                           <Component id="pnlMiPrestamo" max="32767" attributes="0"/>
-                          <Component id="pnlListarPrestamos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlConsulPrestamo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -88,7 +91,7 @@
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="pnlMiPrestamo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="pnlListarPrestamos" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlConsulPrestamo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="104" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -101,6 +104,10 @@
                   <Color blue="ad" green="8b" red="58" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlConsultarMaterialMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlConsultarMaterialMouseExited"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -130,6 +137,10 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Consultar material"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMaterialMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMaterialMouseExited"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -139,6 +150,10 @@
                   <Color blue="ad" green="8b" red="58" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlMiPrestamoMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlMiPrestamoMouseExited"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -168,22 +183,30 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Consultar mi material"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMiPrestamoMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnMiPrestamoMouseExited"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="pnlListarPrestamos">
+            <Container class="javax.swing.JPanel" name="pnlConsulPrestamo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ad" green="8b" red="58" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlConsulPrestamoMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlConsulPrestamoMouseExited"/>
+              </Events>
 
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="btnConsPrestamo" pref="181" max="32767" attributes="0"/>
+                          <Component id="btnConsulPrestamo" pref="181" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -192,20 +215,24 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnConsPrestamo" pref="63" max="32767" attributes="0"/>
+                          <Component id="btnConsulPrestamo" pref="63" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="btnConsPrestamo">
+                <Component class="javax.swing.JLabel" name="btnConsulPrestamo">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Rockwell" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Consultar pr&#xe9;stamos"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsulPrestamoMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsulPrestamoMouseExited"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

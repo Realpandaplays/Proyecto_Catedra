@@ -1,8 +1,11 @@
 package Biblioteca.GUI;
 
+import Biblioteca.DAL.ConexionMySQL;
+import Biblioteca.DAL.RegistroUsuarios;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.sql.Connection;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 
@@ -11,6 +14,8 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
  * @author Laura Pineda
  */
 public class Inicio extends javax.swing.JFrame {
+    
+    private RegistroUsuarios usuariologin = new RegistroUsuarios ((Connection) ConexionMySQL.obtenerConexion());
 
     public Inicio() {
         initComponents();
@@ -28,7 +33,7 @@ public class Inicio extends javax.swing.JFrame {
         imgBiblioteca = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        txtIdentificacion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         txtClave = new javax.swing.JTextField();
@@ -133,14 +138,14 @@ public class Inicio extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Usuario:");
+        jLabel2.setText("Carnet:");
 
-        txtUsuario.setBackground(new java.awt.Color(142, 144, 145));
-        txtUsuario.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(200, 200, 200));
-        txtUsuario.setText("Ingrese su usuario");
-        txtUsuario.setBorder(null);
-        txtUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtIdentificacion.setBackground(new java.awt.Color(142, 144, 145));
+        txtIdentificacion.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        txtIdentificacion.setForeground(new java.awt.Color(200, 200, 200));
+        txtIdentificacion.setText("Ingrese su carnet");
+        txtIdentificacion.setBorder(null);
+        txtIdentificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -200,6 +205,11 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresar.setForeground(new java.awt.Color(200, 200, 200));
         btnIngresar.setText("Ingresar");
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIngresarMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlIngresarLayout = new javax.swing.GroupLayout(pnlIngresar);
         pnlIngresar.setLayout(pnlIngresarLayout);
@@ -282,7 +292,7 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGap(226, 226, 226))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtUsuario)
+                                    .addComponent(txtIdentificacion)
                                     .addComponent(jSeparator1)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -322,7 +332,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsuario)
+                .addComponent(txtIdentificacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
@@ -485,6 +495,22 @@ public class Inicio extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRestablecerMouseClicked
 
+    private void btnIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseClicked
+        if(txtIdentificacion.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Carnet está vacío",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtClave.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Contraseña está vacío",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (!usuariologin.LocalizarUser(txtIdentificacion.getText().trim(),txtClave.getText().trim())){
+                    JOptionPane.showMessageDialog(null, "Carnet o contraseña incorrecta"
+                    + "\n Imposible encontrarlo",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+                } else{
+                        
+                }
+    }//GEN-LAST:event_btnIngresarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -540,6 +566,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlRegistrar;
     private javax.swing.JPanel pnlSalir;
     private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtIdentificacion;
     // End of variables declaration//GEN-END:variables
 }

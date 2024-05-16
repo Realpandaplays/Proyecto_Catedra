@@ -50,13 +50,14 @@ public class RegistroUsuarios {
     
     //Localizar usuario por carnet (identificacion)
     
-    public boolean LocalizarUser (String identificacion){
+    public boolean LocalizarUser (String identificacion, String clave){
         boolean encontrado = false;
         
         try {
-            String sql = "SELECT * FROM usuarios WHERE identificacion = ?";
+            String sql = "SELECT * FROM usuarios WHERE identificacion = ? AND clave = ?";
             java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, identificacion);
+            statement.setString(2, clave);
             ResultSet resultSet = statement.executeQuery();
             
             if (resultSet.next()) {
