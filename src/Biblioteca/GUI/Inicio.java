@@ -517,25 +517,32 @@ public class Inicio extends javax.swing.JFrame {
         } else if (txtClave.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo Contraseña está vacío",
                     "Error", JOptionPane.ERROR_MESSAGE);
-                } else if (!usuariologin.LocalizarUser(txtIdentificacion.getText().trim(),txtClave.getText().trim())){
+                } else if (!usuariologin.LocalizarUser(txtIdentificacion.getText().trim(), String.valueOf(txtClave.getPassword()))){
                     JOptionPane.showMessageDialog(null, "Carnet o contraseña incorrecta"
                     + "\n Imposible encontrarlo",
                     "Error", JOptionPane.ERROR_MESSAGE);
                 } else{
-                     privi= usuariologin.SelecPriv(txtIdentificacion.getText().trim() , txtClave.getText().trim());
+                     privi = usuariologin.SelecPriv(txtIdentificacion.getText().trim() , String.valueOf(txtClave.getPassword()));
                      cargarCajas(privi);
-                     if(txtPrivi.getText().trim()=="Administrador"){
+                     String privilegioUsuario = txtPrivi.getText();
+                     String administrador = "Administrador";
+                     String profesor = "Profesor";
+                     String Alumno = "Estudiante";
+                     
+                     if(privilegioUsuario.equals(administrador)){
                          Principal_Admin admin = new Principal_Admin();
                          admin.setVisible(true);
                          this.dispose();
-                     } else if (txtPrivi.getText().trim()=="Profesor"){
+                     } else if (privilegioUsuario.equals(profesor)){
                          Principal_Profesor profe = new Principal_Profesor();
                          profe.setVisible(true);
                          this.dispose();
-                     } else {
+                     } else if (privilegioUsuario.equals(Alumno)){
                          Principal_Estudiante alumno = new Principal_Estudiante();
                          alumno.setVisible(true);
                          this.dispose();
+                     } else {
+                      JOptionPane.showMessageDialog(null, "Privilegio no encontrado, el privilegio del usuario es: " + String.valueOf(txtPrivi.getText().trim()) , "Error", JOptionPane.ERROR_MESSAGE);                         
                      }
                 }
     }//GEN-LAST:event_btnIngresarMouseClicked

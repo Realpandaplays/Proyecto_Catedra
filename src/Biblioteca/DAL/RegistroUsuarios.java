@@ -78,11 +78,11 @@ public class RegistroUsuarios {
         Usuarios rol = null;
         
         try {
-            String sql = "SELECT `privilegio` FROM `usuarios` WHERE `identificacion`='"+identificacion+"' AND `clave`='"+clave+"'";
+            String sql = "SELECT `privilegio` FROM `usuarios` WHERE `identificacion`= ? AND clave = ?";
             
             java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
             statement.setString(1, identificacion);
-            statement.setString(1,clave);
+            statement.setString(2,clave);
 
             ResultSet resultSet = statement.executeQuery();
             
