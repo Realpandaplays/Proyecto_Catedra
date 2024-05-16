@@ -451,6 +451,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarMouseEntered
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+       
         if (txtCarnet.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(null, "El campo Carnet no puede quedar en blanco",
                     "Error", JOptionPane.ERROR_MESSAGE);

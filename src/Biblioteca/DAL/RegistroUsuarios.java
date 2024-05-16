@@ -79,12 +79,13 @@ public class RegistroUsuarios {
         
         try {
             String sql = "UPDATE usuarios SET clave = ?"
-                    + "WHERE identificacion = ?";
+                    + "WHERE identificacion = ? AND nacimiento = ?";
             
             PreparedStatement statement = conexion.prepareStatement(sql);
             
             statement.setString(1, RegistroUsuarios.getClave());
             statement.setString(2, RegistroUsuarios.getIdentificacion());
+            statement.setString(2, RegistroUsuarios.getNacimiento());
             
             rowUpdated = statement.executeUpdate()>0;
             statement.close();
@@ -94,5 +95,31 @@ public class RegistroUsuarios {
         return rowUpdated;
         
     }
+    
+    //Localizar para restablecer contraseña
+    
+    public boolean Restablecer (String identificacion, String nacimiento){
+        boolean encontrado = false;
+        
+        try {
+            String sql = "SELECT * FROM usuarios WHERE identificacion = ? AND nacimiento = ?";
+            java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, identificacion);
+            statement.setString(2, nacimiento);
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()) {
+                encontrado = true;
+            }
+
+            resultSet.close();
+            statement.close();
+        }catch(SQLException ex){
+            Logger.getLogger(Usuarios.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return encontrado;
+    }
+    
+    
     
 }

@@ -36,7 +36,6 @@ public class Inicio extends javax.swing.JFrame {
         txtIdentificacion = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        txtClave = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         cbxMostrar = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
@@ -45,6 +44,7 @@ public class Inicio extends javax.swing.JFrame {
         btnRestablecer = new javax.swing.JLabel();
         pnlRegistrar = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JLabel();
+        txtClave = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,13 +153,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
-        txtClave.setBackground(new java.awt.Color(142, 144, 145));
-        txtClave.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtClave.setForeground(new java.awt.Color(200, 200, 200));
-        txtClave.setText("Ingrese su contraseña");
-        txtClave.setBorder(null);
-        txtClave.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
 
         cbxMostrar.setBackground(new java.awt.Color(142, 144, 145));
@@ -167,6 +160,9 @@ public class Inicio extends javax.swing.JFrame {
         cbxMostrar.setText("Mostrar");
         cbxMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbxMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbxMostrarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 cbxMostrarMouseEntered(evt);
             }
@@ -278,33 +274,38 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        txtClave.setBackground(new java.awt.Color(142, 144, 145));
+        txtClave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtClave.setForeground(new java.awt.Color(200, 200, 200));
+        txtClave.setText("jPasswordField1");
+        txtClave.setBorder(null);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(271, 271, 271))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtIdentificacion)
+                            .addComponent(jSeparator1)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(226, 226, 226))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIdentificacion)
-                                    .addComponent(jSeparator1)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGap(240, 240, 240)))
-                                .addGap(9, 9, 9))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtClave)
-                                .addGap(9, 9, 9))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jSeparator2)
-                                .addGap(9, 9, 9)))
-                        .addGap(45, 45, 45))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(240, 240, 240))
+                            .addComponent(txtClave))
+                        .addGap(54, 54, 54))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jSeparator2)
+                        .addGap(54, 54, 54))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,10 +320,6 @@ public class Inicio extends javax.swing.JFrame {
                                 .addGap(91, 91, 91)
                                 .addComponent(pnlRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(60, 60, 60))))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,14 +337,14 @@ public class Inicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtClave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(8, 8, 8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlRegistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
@@ -511,6 +508,14 @@ public class Inicio extends javax.swing.JFrame {
                 }
     }//GEN-LAST:event_btnIngresarMouseClicked
 
+    private void cbxMostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxMostrarMouseClicked
+        if(cbxMostrar.isSelected()){
+            txtClave.setEchoChar((char)0);
+        } else{
+            txtClave.setEchoChar('*');
+        }
+    }//GEN-LAST:event_cbxMostrarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -565,7 +570,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JPanel pnlIngresar;
     private javax.swing.JPanel pnlRegistrar;
     private javax.swing.JPanel pnlSalir;
-    private javax.swing.JTextField txtClave;
+    private javax.swing.JPasswordField txtClave;
     private javax.swing.JTextField txtIdentificacion;
     // End of variables declaration//GEN-END:variables
 }
