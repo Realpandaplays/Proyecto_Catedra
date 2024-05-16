@@ -1,7 +1,12 @@
 package Biblioteca.GUI;
 
+import Biblioteca.DAL.ConexionMySQL;
+import Biblioteca.DAL.RegistroUsuarios;
+import Biblioteca.POJOS.Usuarios;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,6 +14,20 @@ import java.awt.Font;
  */
 public class Registrar extends javax.swing.JFrame {
 
+    private RegistroUsuarios registrar = new RegistroUsuarios ((Connection) ConexionMySQL.obtenerConexion());
+    
+    private void LimpiarCajas(){
+        
+        txtCarnet.setText(null);
+        txtUsuario.setText(null);
+        txtNombre.setText(null);
+        txtApellido.setText(null);
+        txtClave.setText(null);
+        txtCumple.setText(null);
+        cobxPrivilegio.setSelectedIndex(0);
+        cbxMostrar.setSelected(false);
+        
+    }
     public Registrar() {
         initComponents();
     }
@@ -157,11 +176,33 @@ public class Registrar extends javax.swing.JFrame {
 
         pnlGuardar.setBackground(new java.awt.Color(197, 197, 197));
         pnlGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlGuardarMouseExited(evt);
+            }
+        });
 
         btnGuardar.setForeground(new java.awt.Color(66, 64, 64));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/GUI/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlGuardarLayout = new javax.swing.GroupLayout(pnlGuardar);
         pnlGuardar.setLayout(pnlGuardarLayout);
@@ -402,6 +443,121 @@ public class Registrar extends javax.swing.JFrame {
         inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarMouseClicked
+
+    private void btnGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseEntered
+        pnlGuardar.setBackground(new Color(149,147,147));
+        btnGuardar.setForeground(new Color(0,0,0));
+        btnGuardar.setFont(new Font("Dialog", Font.BOLD, 12));
+    }//GEN-LAST:event_btnGuardarMouseEntered
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+       
+        if (txtCarnet.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Carnet no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtUsuario.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Usuario no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtNombre.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Nombre no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtApellido.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Apellido no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtClave.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Clave no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtCumple.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Cumpleaños no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (cobxPrivilegio.getSelectedItem()=="Seleccionar"){
+                JOptionPane.showMessageDialog(null, "Por favor seleccionar un rol",
+                    "Error", JOptionPane.ERROR_MESSAGE);  
+        } else {
+            String identificacion = txtCarnet.getText();
+            String usuario = txtUsuario.getText();
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String clave = new String (txtClave.getPassword());
+            String nacimiento = txtCumple.getText();
+            String privilegio = (String) cobxPrivilegio.getSelectedItem();
+            
+            Usuarios registro = new Usuarios (identificacion, clave, nombre, apellido, usuario, nacimiento, privilegio);
+                    
+            if(registrar.RegistrarUser(registro)){
+                JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente",
+                        "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo registrar usuario",
+                        "Registro fallido", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        LimpiarCajas();
+        txtCarnet.requestFocus();
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseExited
+        pnlGuardar.setBackground(new Color(197,197,197));
+        btnGuardar.setForeground(new Color(66,64,64));
+        btnGuardar.setFont(new Font("Dialog", Font.PLAIN, 12));
+    }//GEN-LAST:event_btnGuardarMouseExited
+
+    private void pnlGuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlGuardarMouseEntered
+        pnlGuardar.setBackground(new Color(149,147,147));
+        btnGuardar.setForeground(new Color(0,0,0));
+        btnGuardar.setFont(new Font("Dialog", Font.BOLD, 12));
+    }//GEN-LAST:event_pnlGuardarMouseEntered
+
+    private void pnlGuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlGuardarMouseExited
+        pnlGuardar.setBackground(new Color(197,197,197));
+        btnGuardar.setForeground(new Color(66,64,64));
+        btnGuardar.setFont(new Font("Dialog", Font.PLAIN, 12));
+    }//GEN-LAST:event_pnlGuardarMouseExited
+
+    private void pnlGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlGuardarMouseClicked
+        if (txtCarnet.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Carnet no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtUsuario.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Usuario no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtNombre.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Nombre no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtApellido.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Apellido no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtClave.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Clave no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtCumple.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Cumpleaños no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (cobxPrivilegio.getSelectedItem()=="Seleccionar"){
+                JOptionPane.showMessageDialog(null, "Por favor seleccionar un rol",
+                    "Error", JOptionPane.ERROR_MESSAGE);  
+        } else {
+            String identificacion = txtCarnet.getText();
+            String usuario = txtUsuario.getText();
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String clave = new String (txtClave.getPassword());
+            String nacimiento = txtCumple.getText();
+            String privilegio = (String) cobxPrivilegio.getSelectedItem();
+            
+            Usuarios registro = new Usuarios (identificacion, clave, nombre, apellido, usuario, nacimiento, privilegio);
+                    
+            if(registrar.RegistrarUser(registro)){
+                JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente",
+                        "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo registrar usuario",
+                        "Registro fallido", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        LimpiarCajas();
+        txtCarnet.requestFocus();
+    }//GEN-LAST:event_pnlGuardarMouseClicked
 
    
     public static void main(String args[]) {

@@ -1,5 +1,6 @@
 package Biblioteca.GUI;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -42,8 +43,8 @@ public class Principal_Admin extends javax.swing.JFrame {
         btnPrestamo = new javax.swing.JLabel();
         pnlDevolver = new javax.swing.JPanel();
         btnDevolver = new javax.swing.JLabel();
-        pnlListarPrestamos = new javax.swing.JPanel();
-        btnConsPrestamo = new javax.swing.JLabel();
+        pnlConsulPrestamo = new javax.swing.JPanel();
+        btnConsulPrestamo = new javax.swing.JLabel();
         pnlConfPrestamo = new javax.swing.JPanel();
         btnConfPrestamo = new javax.swing.JLabel();
         pnlCalcularMora = new javax.swing.JPanel();
@@ -61,9 +62,25 @@ public class Principal_Admin extends javax.swing.JFrame {
         pnlMenu.setBackground(new java.awt.Color(88, 139, 173));
 
         pnlMaterial.setBackground(new java.awt.Color(88, 139, 173));
+        pnlMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlMaterialMouseExited(evt);
+            }
+        });
 
         btnMaterial.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnMaterial.setText("Modificar material");
+        btnMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMaterialMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMaterialLayout = new javax.swing.GroupLayout(pnlMaterial);
         pnlMaterial.setLayout(pnlMaterialLayout);
@@ -83,9 +100,25 @@ public class Principal_Admin extends javax.swing.JFrame {
         );
 
         pnlConsultarMaterial.setBackground(new java.awt.Color(88, 139, 173));
+        pnlConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMouseExited(evt);
+            }
+        });
 
         btnConsultarMaterial.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnConsultarMaterial.setText("Consultar material");
+        btnConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlConsultarMaterialLayout = new javax.swing.GroupLayout(pnlConsultarMaterial);
         pnlConsultarMaterial.setLayout(pnlConsultarMaterialLayout);
@@ -105,9 +138,25 @@ public class Principal_Admin extends javax.swing.JFrame {
         );
 
         pnlPrestar.setBackground(new java.awt.Color(88, 139, 173));
+        pnlPrestar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlPrestarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlPrestarMouseExited(evt);
+            }
+        });
 
         btnPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnPrestamo.setText("Préstamo");
+        btnPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPrestamoMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlPrestarLayout = new javax.swing.GroupLayout(pnlPrestar);
         pnlPrestar.setLayout(pnlPrestarLayout);
@@ -127,9 +176,25 @@ public class Principal_Admin extends javax.swing.JFrame {
         );
 
         pnlDevolver.setBackground(new java.awt.Color(88, 139, 173));
+        pnlDevolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlDevolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlDevolverMouseExited(evt);
+            }
+        });
 
         btnDevolver.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnDevolver.setText("Devolución");
+        btnDevolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDevolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDevolverMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDevolverLayout = new javax.swing.GroupLayout(pnlDevolver);
         pnlDevolver.setLayout(pnlDevolverLayout);
@@ -148,40 +213,72 @@ public class Principal_Admin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlListarPrestamos.setBackground(new java.awt.Color(88, 139, 173));
+        pnlConsulPrestamo.setBackground(new java.awt.Color(88, 139, 173));
+        pnlConsulPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlConsulPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlConsulPrestamoMouseExited(evt);
+            }
+        });
 
-        btnConsPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btnConsPrestamo.setText("Consultar préstamos");
+        btnConsulPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        btnConsulPrestamo.setText("Consultar préstamos");
+        btnConsulPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConsulPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsulPrestamoMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout pnlListarPrestamosLayout = new javax.swing.GroupLayout(pnlListarPrestamos);
-        pnlListarPrestamos.setLayout(pnlListarPrestamosLayout);
-        pnlListarPrestamosLayout.setHorizontalGroup(
-            pnlListarPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarPrestamosLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlConsulPrestamoLayout = new javax.swing.GroupLayout(pnlConsulPrestamo);
+        pnlConsulPrestamo.setLayout(pnlConsulPrestamoLayout);
+        pnlConsulPrestamoLayout.setHorizontalGroup(
+            pnlConsulPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsulPrestamoLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(btnConsulPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnlListarPrestamosLayout.setVerticalGroup(
-            pnlListarPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListarPrestamosLayout.createSequentialGroup()
+        pnlConsulPrestamoLayout.setVerticalGroup(
+            pnlConsulPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlConsulPrestamoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsulPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlConfPrestamo.setBackground(new java.awt.Color(88, 139, 173));
+        pnlConfPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlConfPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlConfPrestamoMouseExited(evt);
+            }
+        });
 
         btnConfPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnConfPrestamo.setText("Configurar préstamos");
+        btnConfPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConfPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConfPrestamoMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlConfPrestamoLayout = new javax.swing.GroupLayout(pnlConfPrestamo);
         pnlConfPrestamo.setLayout(pnlConfPrestamoLayout);
         pnlConfPrestamoLayout.setHorizontalGroup(
             pnlConfPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlConfPrestamoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnConfPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConfPrestamoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConfPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlConfPrestamoLayout.setVerticalGroup(
@@ -193,17 +290,33 @@ public class Principal_Admin extends javax.swing.JFrame {
         );
 
         pnlCalcularMora.setBackground(new java.awt.Color(88, 139, 173));
+        pnlCalcularMora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlCalcularMoraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlCalcularMoraMouseExited(evt);
+            }
+        });
 
         btnCalcularMora.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnCalcularMora.setText("Calcular mora");
+        btnCalcularMora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCalcularMoraMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCalcularMoraMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlCalcularMoraLayout = new javax.swing.GroupLayout(pnlCalcularMora);
         pnlCalcularMora.setLayout(pnlCalcularMoraLayout);
         pnlCalcularMoraLayout.setHorizontalGroup(
             pnlCalcularMoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlCalcularMoraLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCalcularMora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCalcularMoraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCalcularMora, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlCalcularMoraLayout.setVerticalGroup(
@@ -225,7 +338,7 @@ public class Principal_Admin extends javax.swing.JFrame {
                     .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlPrestar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlDevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlConsulPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlConfPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlCalcularMora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -241,7 +354,7 @@ public class Principal_Admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlConsulPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlConfPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -356,9 +469,147 @@ public class Principal_Admin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void pnlMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMaterialMouseEntered
+        pnlMaterial.setBackground(new Color(0,103,172));
+        btnMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlMaterialMouseEntered
+
+    private void pnlMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMaterialMouseExited
+        pnlMaterial.setBackground(new Color(88,139,173));
+        btnMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlMaterialMouseExited
+
+    private void btnMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaterialMouseEntered
+        pnlMaterial.setBackground(new Color(0,103,172));
+        btnMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnMaterialMouseEntered
+
+    private void btnMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaterialMouseExited
+        pnlMaterial.setBackground(new Color(88,139,173));
+        btnMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnMaterialMouseExited
+
+    private void pnlConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseEntered
+        pnlConsultarMaterial.setBackground(new Color(0,103,172));
+        btnConsultarMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlConsultarMaterialMouseEntered
+
+    private void pnlConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseExited
+        pnlConsultarMaterial.setBackground(new Color(88,139,173));
+        btnConsultarMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlConsultarMaterialMouseExited
+
+    private void btnConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseEntered
+        pnlConsultarMaterial.setBackground(new Color(0,103,172));
+        btnConsultarMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnConsultarMaterialMouseEntered
+
+    private void btnConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseExited
+        pnlConsultarMaterial.setBackground(new Color(88,139,173));
+        btnConsultarMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnConsultarMaterialMouseExited
+
+    private void pnlPrestarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPrestarMouseEntered
+        pnlPrestar.setBackground(new Color(0,103,172));
+        btnPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlPrestarMouseEntered
+
+    private void pnlPrestarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPrestarMouseExited
+        pnlPrestar.setBackground(new Color(88,139,173));
+        btnPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlPrestarMouseExited
+
+    private void btnPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoMouseEntered
+        pnlPrestar.setBackground(new Color(0,103,172));
+        btnPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnPrestamoMouseEntered
+
+    private void btnPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoMouseExited
+        pnlPrestar.setBackground(new Color(88,139,173));
+        btnPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnPrestamoMouseExited
+
+    private void pnlDevolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDevolverMouseEntered
+        pnlDevolver.setBackground(new Color(0,103,172));
+        btnDevolver.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlDevolverMouseEntered
+
+    private void pnlDevolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDevolverMouseExited
+        pnlDevolver.setBackground(new Color(88,139,173));
+        btnDevolver.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlDevolverMouseExited
+
+    private void btnDevolverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDevolverMouseEntered
+        pnlDevolver.setBackground(new Color(0,103,172));
+        btnDevolver.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnDevolverMouseEntered
+
+    private void btnDevolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDevolverMouseExited
+        pnlDevolver.setBackground(new Color(88,139,173));
+        btnDevolver.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnDevolverMouseExited
+
+    private void pnlConsulPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsulPrestamoMouseEntered
+        pnlConsulPrestamo.setBackground(new Color(0,103,172));
+        btnConsulPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlConsulPrestamoMouseEntered
+
+    private void pnlConsulPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsulPrestamoMouseExited
+        pnlConsulPrestamo.setBackground(new Color(88,139,173));
+        btnConsulPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlConsulPrestamoMouseExited
+
+    private void btnConsulPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsulPrestamoMouseEntered
+        pnlConsulPrestamo.setBackground(new Color(0,103,172));
+        btnConsulPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnConsulPrestamoMouseEntered
+
+    private void btnConsulPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsulPrestamoMouseExited
+        pnlConsulPrestamo.setBackground(new Color(88,139,173));
+        btnConsulPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnConsulPrestamoMouseExited
+
+    private void pnlConfPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConfPrestamoMouseEntered
+        pnlConfPrestamo.setBackground(new Color(0,103,172));
+        btnConfPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlConfPrestamoMouseEntered
+
+    private void pnlConfPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConfPrestamoMouseExited
+        pnlConfPrestamo.setBackground(new Color(88,139,173));
+        btnConfPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlConfPrestamoMouseExited
+
+    private void btnConfPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfPrestamoMouseEntered
+        pnlConfPrestamo.setBackground(new Color(0,103,172));
+        btnConfPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnConfPrestamoMouseEntered
+
+    private void btnConfPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfPrestamoMouseExited
+        pnlConfPrestamo.setBackground(new Color(88,139,173));
+        btnConfPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnConfPrestamoMouseExited
+
+    private void pnlCalcularMoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCalcularMoraMouseEntered
+        pnlCalcularMora.setBackground(new Color(0,103,172));
+        btnCalcularMora.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlCalcularMoraMouseEntered
+
+    private void pnlCalcularMoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCalcularMoraMouseExited
+        pnlCalcularMora.setBackground(new Color(88,139,173));
+        btnCalcularMora.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlCalcularMoraMouseExited
+
+    private void btnCalcularMoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMoraMouseEntered
+        pnlCalcularMora.setBackground(new Color(0,103,172));
+        btnCalcularMora.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnCalcularMoraMouseEntered
+
+    private void btnCalcularMoraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMoraMouseExited
+        pnlCalcularMora.setBackground(new Color(88,139,173));
+        btnCalcularMora.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnCalcularMoraMouseExited
+
+ 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -398,7 +649,7 @@ public class Principal_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel Content;
     private javax.swing.JLabel btnCalcularMora;
     private javax.swing.JLabel btnConfPrestamo;
-    private javax.swing.JLabel btnConsPrestamo;
+    private javax.swing.JLabel btnConsulPrestamo;
     private javax.swing.JLabel btnConsultarMaterial;
     private javax.swing.JLabel btnDevolver;
     private javax.swing.JLabel btnMaterial;
@@ -410,10 +661,10 @@ public class Principal_Admin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBg;
     private javax.swing.JPanel pnlCalcularMora;
     private javax.swing.JPanel pnlConfPrestamo;
+    private javax.swing.JPanel pnlConsulPrestamo;
     private javax.swing.JPanel pnlConsultarMaterial;
     private javax.swing.JPanel pnlDevolver;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlListarPrestamos;
     private javax.swing.JPanel pnlMaterial;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlPrestar;

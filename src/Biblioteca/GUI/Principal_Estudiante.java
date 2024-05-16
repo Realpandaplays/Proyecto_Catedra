@@ -1,5 +1,6 @@
 package Biblioteca.GUI;
 
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -38,8 +39,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         btnConsultarMaterial = new javax.swing.JLabel();
         pnlMiPrestamo = new javax.swing.JPanel();
         btnMiPrestamo = new javax.swing.JLabel();
-        pnlListarPrestamos = new javax.swing.JPanel();
-        btnConsPrestamo = new javax.swing.JLabel();
         pnlHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
@@ -51,11 +50,32 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         pnlMenu.setBackground(new java.awt.Color(88, 139, 173));
+        pnlMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlMenuMouseEntered(evt);
+            }
+        });
 
         pnlConsultarMaterial.setBackground(new java.awt.Color(88, 139, 173));
+        pnlConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMouseExited(evt);
+            }
+        });
 
         btnConsultarMaterial.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnConsultarMaterial.setText("Consultar material");
+        btnConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlConsultarMaterialLayout = new javax.swing.GroupLayout(pnlConsultarMaterial);
         pnlConsultarMaterial.setLayout(pnlConsultarMaterialLayout);
@@ -75,9 +95,25 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         );
 
         pnlMiPrestamo.setBackground(new java.awt.Color(88, 139, 173));
+        pnlMiPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlMiPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlMiPrestamoMouseExited(evt);
+            }
+        });
 
         btnMiPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnMiPrestamo.setText("Consultar mi material");
+        btnMiPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMiPrestamoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMiPrestamoMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMiPrestamoLayout = new javax.swing.GroupLayout(pnlMiPrestamo);
         pnlMiPrestamo.setLayout(pnlMiPrestamoLayout);
@@ -96,28 +132,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlListarPrestamos.setBackground(new java.awt.Color(88, 139, 173));
-
-        btnConsPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btnConsPrestamo.setText("Consultar préstamos");
-
-        javax.swing.GroupLayout pnlListarPrestamosLayout = new javax.swing.GroupLayout(pnlListarPrestamos);
-        pnlListarPrestamos.setLayout(pnlListarPrestamosLayout);
-        pnlListarPrestamosLayout.setHorizontalGroup(
-            pnlListarPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarPrestamosLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlListarPrestamosLayout.setVerticalGroup(
-            pnlListarPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlListarPrestamosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
@@ -126,8 +140,7 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +149,7 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pnlHeader.setBackground(new java.awt.Color(88, 139, 173));
@@ -248,9 +259,51 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void pnlConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseEntered
+        pnlConsultarMaterial.setBackground(new Color(0,103,172));
+        btnConsultarMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlConsultarMaterialMouseEntered
+
+    private void pnlConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseExited
+        pnlConsultarMaterial.setBackground(new Color(88,139,173));
+        btnConsultarMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlConsultarMaterialMouseExited
+
+    private void btnConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseEntered
+        pnlConsultarMaterial.setBackground(new Color(0,103,172));
+        btnConsultarMaterial.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnConsultarMaterialMouseEntered
+
+    private void btnConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseExited
+        pnlConsultarMaterial.setBackground(new Color(88,139,173));
+        btnConsultarMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnConsultarMaterialMouseExited
+
+    private void pnlMiPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMiPrestamoMouseEntered
+        pnlMiPrestamo.setBackground(new Color(0,103,172));
+        btnMiPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlMiPrestamoMouseEntered
+
+    private void pnlMiPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMiPrestamoMouseExited
+        pnlMiPrestamo.setBackground(new Color(88,139,173));
+        btnMiPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlMiPrestamoMouseExited
+
+    private void btnMiPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMiPrestamoMouseEntered
+        pnlMiPrestamo.setBackground(new Color(0,103,172));
+        btnMiPrestamo.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnMiPrestamoMouseEntered
+
+    private void btnMiPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMiPrestamoMouseExited
+        pnlMiPrestamo.setBackground(new Color(88,139,173));
+        btnMiPrestamo.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnMiPrestamoMouseExited
+
+    private void pnlMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMenuMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pnlMenuMouseEntered
+
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -300,7 +353,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
-    private javax.swing.JLabel btnConsPrestamo;
     private javax.swing.JLabel btnConsultarMaterial;
     private javax.swing.JLabel btnMiPrestamo;
     private javax.swing.JLabel jLabel1;
@@ -310,7 +362,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBg;
     private javax.swing.JPanel pnlConsultarMaterial;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlListarPrestamos;
     private javax.swing.JPanel pnlMenu;
     private javax.swing.JPanel pnlMiPrestamo;
     private javax.swing.JLabel txtFecha;
