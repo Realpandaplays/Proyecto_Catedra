@@ -39,8 +39,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         btnConsultarMaterial = new javax.swing.JLabel();
         pnlMiPrestamo = new javax.swing.JPanel();
         btnMiPrestamo = new javax.swing.JLabel();
-        pnlConsulPrestamo = new javax.swing.JPanel();
-        btnConsulPrestamo = new javax.swing.JLabel();
         pnlHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
@@ -134,44 +132,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlConsulPrestamo.setBackground(new java.awt.Color(88, 139, 173));
-        pnlConsulPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlConsulPrestamoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlConsulPrestamoMouseExited(evt);
-            }
-        });
-
-        btnConsulPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btnConsulPrestamo.setText("Consultar préstamos");
-        btnConsulPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnConsulPrestamoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnConsulPrestamoMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlConsulPrestamoLayout = new javax.swing.GroupLayout(pnlConsulPrestamo);
-        pnlConsulPrestamo.setLayout(pnlConsulPrestamoLayout);
-        pnlConsulPrestamoLayout.setHorizontalGroup(
-            pnlConsulPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsulPrestamoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnConsulPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pnlConsulPrestamoLayout.setVerticalGroup(
-            pnlConsulPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlConsulPrestamoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnConsulPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
@@ -180,8 +140,7 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlConsulPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,9 +149,7 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(pnlConsulPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         pnlHeader.setBackground(new java.awt.Color(88, 139, 173));
@@ -346,26 +303,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlMenuMouseEntered
 
-    private void pnlConsulPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsulPrestamoMouseEntered
-        pnlConsulPrestamo.setBackground(new Color(0,103,172));
-        btnConsulPrestamo.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_pnlConsulPrestamoMouseEntered
-
-    private void pnlConsulPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsulPrestamoMouseExited
-        pnlConsulPrestamo.setBackground(new Color(88,139,173));
-        btnConsulPrestamo.setForeground(new Color(187,187,187));
-    }//GEN-LAST:event_pnlConsulPrestamoMouseExited
-
-    private void btnConsulPrestamoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsulPrestamoMouseEntered
-        pnlConsulPrestamo.setBackground(new Color(0,103,172));
-        btnConsulPrestamo.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_btnConsulPrestamoMouseEntered
-
-    private void btnConsulPrestamoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsulPrestamoMouseExited
-        pnlConsulPrestamo.setBackground(new Color(88,139,173));
-        btnConsulPrestamo.setForeground(new Color(187,187,187));
-    }//GEN-LAST:event_btnConsulPrestamoMouseExited
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -416,7 +353,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
-    private javax.swing.JLabel btnConsulPrestamo;
     private javax.swing.JLabel btnConsultarMaterial;
     private javax.swing.JLabel btnMiPrestamo;
     private javax.swing.JLabel jLabel1;
@@ -424,7 +360,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel pnlBg;
-    private javax.swing.JPanel pnlConsulPrestamo;
     private javax.swing.JPanel pnlConsultarMaterial;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMenu;
