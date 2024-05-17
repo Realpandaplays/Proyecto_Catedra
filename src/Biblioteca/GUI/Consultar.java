@@ -116,7 +116,7 @@ public class Consultar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-       /**
+    /**
      * Probando nada mas
      */
     
