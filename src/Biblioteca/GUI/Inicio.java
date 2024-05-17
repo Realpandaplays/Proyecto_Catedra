@@ -295,7 +295,7 @@ public class Inicio extends javax.swing.JFrame {
         txtClave.setBackground(new java.awt.Color(142, 144, 145));
         txtClave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtClave.setForeground(new java.awt.Color(200, 200, 200));
-        txtClave.setText("jPasswordField1");
+        txtClave.setText("Ingrese su Contraseña");
         txtClave.setBorder(null);
         txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -337,14 +337,14 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
                                 .addComponent(txtPrivi, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbxMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                                 .addGap(31, 31, 31))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(91, 91, 91)
@@ -393,7 +393,7 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(pnlBgLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlBgLayout.setVerticalGroup(

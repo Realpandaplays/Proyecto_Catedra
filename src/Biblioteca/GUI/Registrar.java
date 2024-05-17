@@ -174,7 +174,7 @@ public class Registrar extends javax.swing.JFrame {
 
         txtClave.setBackground(new java.awt.Color(197, 197, 197));
         txtClave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtClave.setText("jPasswordField1");
+        txtClave.setText("Ingrese su Contraseña");
         txtClave.setBorder(null);
         txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -203,6 +203,14 @@ public class Registrar extends javax.swing.JFrame {
         txtCumple.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         txtCumple.setText("yyyy-mm-dd");
         txtCumple.setBorder(null);
+        txtCumple.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCumpleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCumpleFocusLost(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(66, 64, 64));
@@ -675,7 +683,7 @@ public class Registrar extends javax.swing.JFrame {
         if(String.valueOf(txtClave.getPassword()).equals("Ingrese su Contraseña"))
         {
             txtClave.setText("");
-            txtClave.setForeground(new Color(200,200,200));
+            txtClave.setForeground(new Color(0,0,0));
             txtClave.setEchoChar('•');
         }
     }//GEN-LAST:event_txtClaveFocusGained
@@ -686,7 +694,7 @@ public class Registrar extends javax.swing.JFrame {
         {
             txtClave.setEchoChar((char)0);
             txtClave.setText("Ingrese su Contraseña");
-            txtClave.setForeground(new Color(200,200,200));
+            txtClave.setForeground(new Color(0,0,0));
         }
     }//GEN-LAST:event_txtClaveFocusLost
 
@@ -699,6 +707,24 @@ public class Registrar extends javax.swing.JFrame {
             txtClave.setEchoChar('•');
         }
     }//GEN-LAST:event_cbxMostrarActionPerformed
+
+    private void txtCumpleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCumpleFocusGained
+        // TODO add your handling code here:
+        if(txtCumple.getText().equals("yyyy-mm-dd"))
+        {
+            txtCumple.setText("");
+            txtCumple.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCumpleFocusGained
+
+    private void txtCumpleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCumpleFocusLost
+        // TODO add your handling code here:
+        if(txtCumple.getText().equals(""))
+        {
+            txtCumple.setText("yyyy-mm-dd");
+            txtCumple.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCumpleFocusLost
 
    
     public static void main(String args[]) {
