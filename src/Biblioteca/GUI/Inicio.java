@@ -26,6 +26,7 @@ public class Inicio extends javax.swing.JFrame {
     }
     public Inicio() {
         initComponents();
+        txtClave.setEchoChar((char)0);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +62,7 @@ public class Inicio extends javax.swing.JFrame {
         imgLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/GUI/imagenes/logo udb.png"))); // NOI18N
 
         pnlSalir.setBackground(new java.awt.Color(70, 119, 152));
-        pnlSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlSalirMouseClicked(evt);
@@ -77,7 +78,7 @@ public class Inicio extends javax.swing.JFrame {
         btnSalir.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(200, 200, 200));
         btnSalir.setText("Salir");
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSalirMouseClicked(evt);
@@ -153,20 +154,24 @@ public class Inicio extends javax.swing.JFrame {
         txtIdentificacion.setForeground(new java.awt.Color(200, 200, 200));
         txtIdentificacion.setText("Ingrese su carnet");
         txtIdentificacion.setBorder(null);
-        txtIdentificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdentificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtIdentificacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdentificacionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdentificacionFocusLost(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña:");
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-
         cbxMostrar.setBackground(new java.awt.Color(142, 144, 145));
         cbxMostrar.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         cbxMostrar.setText("Mostrar");
-        cbxMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbxMostrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cbxMostrarMouseClicked(evt);
@@ -184,6 +189,11 @@ public class Inicio extends javax.swing.JFrame {
                 cbxMostrarMouseReleased(evt);
             }
         });
+        cbxMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMostrarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,7 +201,7 @@ public class Inicio extends javax.swing.JFrame {
         jLabel4.setText("Iniciar Sesión");
 
         pnlIngresar.setBackground(new java.awt.Color(142, 144, 145));
-        pnlIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlIngresar.setPreferredSize(new java.awt.Dimension(154, 43));
         pnlIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,7 +218,7 @@ public class Inicio extends javax.swing.JFrame {
         btnIngresar.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(200, 200, 200));
         btnIngresar.setText("Ingresar");
-        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnIngresarMouseClicked(evt);
@@ -246,7 +256,7 @@ public class Inicio extends javax.swing.JFrame {
         });
 
         pnlRegistrar.setBackground(new java.awt.Color(142, 144, 145));
-        pnlRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRegistrar.setPreferredSize(new java.awt.Dimension(154, 43));
         pnlRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -263,7 +273,7 @@ public class Inicio extends javax.swing.JFrame {
         btnRegistrar.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(200, 200, 200));
         btnRegistrar.setText("Registrar");
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout pnlRegistrarLayout = new javax.swing.GroupLayout(pnlRegistrar);
         pnlRegistrar.setLayout(pnlRegistrarLayout);
@@ -287,8 +297,15 @@ public class Inicio extends javax.swing.JFrame {
         txtClave.setForeground(new java.awt.Color(200, 200, 200));
         txtClave.setText("jPasswordField1");
         txtClave.setBorder(null);
+        txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtClaveFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtClaveFocusLost(evt);
+            }
+        });
 
-        txtPrivi.setForeground(new java.awt.Color(0, 0, 0));
         txtPrivi.setPreferredSize(new java.awt.Dimension(20, 20));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -320,7 +337,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(pnlIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(btnRestablecer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -554,6 +571,54 @@ public class Inicio extends javax.swing.JFrame {
             txtClave.setEchoChar('*');
         }
     }//GEN-LAST:event_cbxMostrarMouseClicked
+
+    private void txtIdentificacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdentificacionFocusGained
+        // TODO add your handling code here:
+        if(txtIdentificacion.getText().equals("Ingrese su carnet"))
+        {
+            txtIdentificacion.setText("");
+            txtIdentificacion.setForeground(new Color(250,250,250));
+        }
+    }//GEN-LAST:event_txtIdentificacionFocusGained
+
+    private void txtIdentificacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdentificacionFocusLost
+        // TODO add your handling code here:
+        if(txtIdentificacion.getText().equals(""))
+        {
+            txtIdentificacion.setText("Ingrese su carnet");
+            txtIdentificacion.setForeground(new Color(200,200,200));
+        }
+    }//GEN-LAST:event_txtIdentificacionFocusLost
+
+    private void txtClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusGained
+        // TODO add your handling code here:
+        if(String.valueOf(txtClave.getPassword()).equals("Ingrese su Contraseña"))
+        {
+            txtClave.setText("");
+            txtClave.setForeground(new Color(200,200,200));
+            txtClave.setEchoChar('•');
+        }
+    }//GEN-LAST:event_txtClaveFocusGained
+
+    private void txtClaveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusLost
+        // TODO add your handling code here:
+        if(txtClave.getPassword().length<1)
+        {
+            txtClave.setEchoChar((char)0);
+            txtClave.setText("Ingrese su Contraseña");
+            txtClave.setForeground(new Color(200,200,200));
+        }
+    }//GEN-LAST:event_txtClaveFocusLost
+
+    private void cbxMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMostrarActionPerformed
+        // TODO add your handling code here:
+        if(cbxMostrar.isSelected())
+        {
+            txtClave.setEchoChar((char)0);
+        }else{
+            txtClave.setEchoChar('•');
+        }
+    }//GEN-LAST:event_cbxMostrarActionPerformed
 
     
     public static void main(String args[]) {
