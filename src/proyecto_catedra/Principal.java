@@ -13,4 +13,6 @@ public class Principal {
         arranque.setVisible(true);
     }
     
+    
+    /**Solo prueba**/
 }
