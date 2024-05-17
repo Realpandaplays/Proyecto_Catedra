@@ -20,9 +20,9 @@ public class Material {
     private String duracion;
     private String publicacion;
     private int disponibilidad;
+    private String tipoMaterial;
     
-    public Material (String idInterno, String titulo, String autor, String director, int numPaginas, String editorial, String ISBN,String universidad,
-            String tituloCancion, String tituloAlbum, String cantante, String duracion, String publicacion, int disponibilidad){
+    public Material (String idInterno, String titulo, int numPaginas, String autor, int disponibilidad, String director, String editorial, String ISBN){
         
         this.idInterno = idInterno;
         this.titulo = titulo;
@@ -38,6 +38,7 @@ public class Material {
         this.duracion = duracion;
         this.publicacion = publicacion;
         this.disponibilidad = disponibilidad;
+        this.tipoMaterial = tipoMaterial;
         
     }
 
@@ -96,6 +97,10 @@ public class Material {
     public int getDisponibilidad() {
         return disponibilidad;
     }
+    
+    public String getTipoMaterial() {
+        return tipoMaterial;
+    }
 
     public void setIdInterno(String idInterno) {
         this.idInterno = idInterno;
@@ -151,6 +156,10 @@ public class Material {
 
     public void setDisponibilidad(int disponibilidad) {
         this.disponibilidad = disponibilidad;
-    }    
+    }  
+    
+    public void setTipoMaterial(String tipoMaterial) {
+        this.tipoMaterial = tipoMaterial;
+    }
     
 }
