@@ -14,6 +14,10 @@ public class Consultar extends javax.swing.JFrame {
     /**
      * Creates new form Consultar
      */
+    
+    /**
+     * Ejemplo de hacer merge
+     */
     public Consultar() {
         initComponents();
     }
