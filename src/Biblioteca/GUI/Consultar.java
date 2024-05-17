@@ -15,6 +15,10 @@ public class Consultar extends javax.swing.JFrame {
      * Creates new form Consultar
      */
     
+     /**
+     * Probando nada mas
+     */
+    
 
     public Consultar() {
         initComponents();
@@ -116,10 +120,6 @@ public class Consultar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * Probando nada mas
-     */
-    
     /**
      * @param args the command line arguments
      */
