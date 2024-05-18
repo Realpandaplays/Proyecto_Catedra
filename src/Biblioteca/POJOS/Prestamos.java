@@ -9,6 +9,15 @@ public class Prestamos {
     private String fechaPrestamo;
     private String fecha_devolucion;
 
+    public Prestamos(String Identificacion, String usuario, String privilegio, String idInterno, String fechaPrestamo, String fecha_devolucion) {
+        this.Identificacion = Identificacion;
+        this.usuario = usuario;
+        this.privilegio = privilegio;
+        this.idInterno = idInterno;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fecha_devolucion = fecha_devolucion;
+    }
+
     public void setIdentificacion(String Identificacion) {
         this.Identificacion = Identificacion;
     }
