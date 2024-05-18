@@ -1,5 +1,8 @@
 package Biblioteca.GUI;
 
+import Biblioteca.Views.AgregarMaterial;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -44,6 +47,8 @@ public class Principal_Profesor extends javax.swing.JFrame {
         btnDevolver = new javax.swing.JLabel();
         pnlListarPrestamos = new javax.swing.JPanel();
         btnConsPrestamo = new javax.swing.JLabel();
+        pnlAgregarMat = new javax.swing.JPanel();
+        btnAgregarMat = new javax.swing.JLabel();
         pnlHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
@@ -63,9 +68,9 @@ public class Principal_Profesor extends javax.swing.JFrame {
         pnlMaterialLayout.setHorizontalGroup(
             pnlMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMaterialLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(btnMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         pnlMaterialLayout.setVerticalGroup(
             pnlMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +157,7 @@ public class Principal_Profesor extends javax.swing.JFrame {
             pnlListarPrestamosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListarPrestamosLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(btnConsPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlListarPrestamosLayout.setVerticalGroup(
@@ -163,23 +168,70 @@ public class Principal_Profesor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnlAgregarMat.setBackground(new java.awt.Color(88, 139, 173));
+        pnlAgregarMat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlAgregarMatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlAgregarMatMouseExited(evt);
+            }
+        });
+
+        btnAgregarMat.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        btnAgregarMat.setText("Agregar Material");
+        btnAgregarMat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarMatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMatMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlAgregarMatLayout = new javax.swing.GroupLayout(pnlAgregarMat);
+        pnlAgregarMat.setLayout(pnlAgregarMatLayout);
+        pnlAgregarMatLayout.setHorizontalGroup(
+            pnlAgregarMatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlAgregarMatLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnAgregarMat, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlAgregarMatLayout.setVerticalGroup(
+            pnlAgregarMatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlAgregarMatLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAgregarMat, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
         pnlMenuLayout.setHorizontalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlPrestar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlDevolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pnlAgregarMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
+                        .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlDevolver, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlPrestar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuLayout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addGap(65, 65, 65)
+                .addComponent(pnlAgregarMat, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +241,7 @@ public class Principal_Profesor extends javax.swing.JFrame {
                 .addComponent(pnlDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlListarPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         pnlHeader.setBackground(new java.awt.Color(88, 139, 173));
@@ -214,7 +266,7 @@ public class Principal_Profesor extends javax.swing.JFrame {
                     .addGroup(pnlHeaderLayout.createSequentialGroup()
                         .addGap(153, 153, 153)
                         .addComponent(txtFecha)))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
         pnlHeaderLayout.setVerticalGroup(
             pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,6 +279,7 @@ public class Principal_Profesor extends javax.swing.JFrame {
         );
 
         Content.setBackground(new java.awt.Color(241, 234, 234));
+        Content.setPreferredSize(new java.awt.Dimension(765, 590));
 
         javax.swing.GroupLayout ContentLayout = new javax.swing.GroupLayout(Content);
         Content.setLayout(ContentLayout);
@@ -236,25 +289,27 @@ public class Principal_Profesor extends javax.swing.JFrame {
         );
         ContentLayout.setVerticalGroup(
             ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 570, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlBgLayout = new javax.swing.GroupLayout(pnlBg);
         pnlBg.setLayout(pnlBgLayout);
         pnlBgLayout.setHorizontalGroup(
             pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnlBgLayout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addGroup(pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)))
+            .addGroup(pnlBgLayout.createSequentialGroup()
+                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlBgLayout.setVerticalGroup(
             pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBgLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
             .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
@@ -273,6 +328,40 @@ public class Principal_Profesor extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarMatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMatMouseClicked
+        AgregarMaterial pl = new AgregarMaterial();
+        pl.setSize(765,590);
+        pl.setLocation(0,0);
+        Content.removeAll();
+        Content.add(pl, BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_btnAgregarMatMouseClicked
+
+    private void btnAgregarMatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMatMouseEntered
+        // TODO add your handling code here:
+        pnlAgregarMat.setBackground(new Color(0,103,172));
+        btnAgregarMat.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_btnAgregarMatMouseEntered
+
+    private void btnAgregarMatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMatMouseExited
+        // TODO add your handling code here:
+        pnlAgregarMat.setBackground(new Color(88,139,173));
+        btnAgregarMat.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_btnAgregarMatMouseExited
+
+    private void pnlAgregarMatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMatMouseEntered
+        // TODO add your handling code here:
+        pnlAgregarMat.setBackground(new Color(0,103,172));
+        btnAgregarMat.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_pnlAgregarMatMouseEntered
+
+    private void pnlAgregarMatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAgregarMatMouseExited
+        // TODO add your handling code here:
+        pnlAgregarMat.setBackground(new Color(88,139,173));
+        btnAgregarMat.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlAgregarMatMouseExited
 
     /**
      * @param args the command line arguments
@@ -318,12 +407,14 @@ public class Principal_Profesor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Content;
+    private javax.swing.JLabel btnAgregarMat;
     private javax.swing.JLabel btnConsPrestamo;
     private javax.swing.JLabel btnConsultarMaterial;
     private javax.swing.JLabel btnDevolver;
     private javax.swing.JLabel btnMaterial;
     private javax.swing.JLabel btnPrestamo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel pnlAgregarMat;
     private javax.swing.JPanel pnlBg;
     private javax.swing.JPanel pnlConsultarMaterial;
     private javax.swing.JPanel pnlDevolver;
