@@ -3,6 +3,7 @@ package Biblioteca.Views;
 import Biblioteca.DAL.ConexionMySQL;
 import Biblioteca.DAL.InventarioMaterial;
 import Biblioteca.POJOS.Material;
+import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -119,12 +120,11 @@ public class AgregarMaterial extends javax.swing.JPanel {
         pnlNuevo = new javax.swing.JPanel();
         btnNuevo = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(680, 174));
+        setPreferredSize(new java.awt.Dimension(765, 590));
 
         pnlBg.setBackground(new java.awt.Color(241, 234, 234));
 
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("IdInterno:");
 
         txtId.setBackground(new java.awt.Color(241, 234, 234));
@@ -132,9 +132,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtId.setForeground(new java.awt.Color(100, 100, 100));
         txtId.setText("Ingrese el Id Interno");
         txtId.setBorder(null);
+        txtId.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Tipo material:");
 
         bmbxMaterial.setBackground(new java.awt.Color(241, 234, 234));
@@ -144,7 +151,6 @@ public class AgregarMaterial extends javax.swing.JPanel {
         bmbxMaterial.setBorder(null);
 
         jLabel3.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Titulo:");
 
         txtTitulo.setBackground(new java.awt.Color(241, 234, 234));
@@ -152,9 +158,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtTitulo.setForeground(new java.awt.Color(100, 100, 100));
         txtTitulo.setText("Ingrese el titulo");
         txtTitulo.setBorder(null);
+        txtTitulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTituloFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTituloFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Autor:");
 
         txtAutor.setBackground(new java.awt.Color(241, 234, 234));
@@ -162,9 +175,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtAutor.setForeground(new java.awt.Color(100, 100, 100));
         txtAutor.setText("Ingrese el autor");
         txtAutor.setBorder(null);
+        txtAutor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAutorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAutorFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Director:");
 
         txtDirector.setBackground(new java.awt.Color(241, 234, 234));
@@ -172,9 +192,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtDirector.setForeground(new java.awt.Color(100, 100, 100));
         txtDirector.setText("Ingrese el director");
         txtDirector.setBorder(null);
+        txtDirector.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDirectorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDirectorFocusLost(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Páginas:");
 
         txtPaginas.setBackground(new java.awt.Color(241, 234, 234));
@@ -182,6 +209,14 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtPaginas.setForeground(new java.awt.Color(100, 100, 100));
         txtPaginas.setText("Ingrese el número de páginas");
         txtPaginas.setBorder(null);
+        txtPaginas.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPaginasFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPaginasFocusLost(evt);
+            }
+        });
         txtPaginas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPaginasActionPerformed(evt);
@@ -189,7 +224,6 @@ public class AgregarMaterial extends javax.swing.JPanel {
         });
 
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Editorial:");
 
         txtEditorial.setBackground(new java.awt.Color(241, 234, 234));
@@ -197,9 +231,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtEditorial.setForeground(new java.awt.Color(100, 100, 100));
         txtEditorial.setText("Ingrese la editorial");
         txtEditorial.setBorder(null);
+        txtEditorial.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEditorialFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEditorialFocusLost(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("ISBN:");
 
         txtISBN.setBackground(new java.awt.Color(241, 234, 234));
@@ -207,9 +248,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtISBN.setForeground(new java.awt.Color(100, 100, 100));
         txtISBN.setText("Ingrese el ISBN");
         txtISBN.setBorder(null);
+        txtISBN.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtISBNFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtISBNFocusLost(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Universidad:");
 
         txtUni.setBackground(new java.awt.Color(241, 234, 234));
@@ -217,9 +265,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtUni.setForeground(new java.awt.Color(100, 100, 100));
         txtUni.setText("nombre de Universidad");
         txtUni.setBorder(null);
+        txtUni.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUniFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUniFocusLost(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Canción:");
 
         txtCancion.setBackground(new java.awt.Color(241, 234, 234));
@@ -227,19 +282,33 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtCancion.setForeground(new java.awt.Color(100, 100, 100));
         txtCancion.setText("Ingrese el nombre de la canción");
         txtCancion.setBorder(null);
+        txtCancion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCancionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCancionFocusLost(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Álbum:");
 
         txtAlbum.setBackground(new java.awt.Color(241, 234, 234));
         txtAlbum.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtAlbum.setForeground(new java.awt.Color(100, 100, 100));
-        txtAlbum.setText("Ingerse el nombre del Album");
+        txtAlbum.setText("Ingrese el nombre del Album");
         txtAlbum.setBorder(null);
+        txtAlbum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAlbumFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtAlbumFocusLost(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Cantante:");
 
         txtCantante.setBackground(new java.awt.Color(241, 234, 234));
@@ -247,9 +316,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtCantante.setForeground(new java.awt.Color(100, 100, 100));
         txtCantante.setText("Ingrese el nombre del cantante");
         txtCantante.setBorder(null);
+        txtCantante.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCantanteFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCantanteFocusLost(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Duración:");
 
         txtDuracion.setBackground(new java.awt.Color(241, 234, 234));
@@ -257,9 +333,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtDuracion.setForeground(new java.awt.Color(100, 100, 100));
         txtDuracion.setText("Ingrese la duracion");
         txtDuracion.setBorder(null);
+        txtDuracion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDuracionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDuracionFocusLost(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Publicación:");
 
         txtPublicacion.setBackground(new java.awt.Color(241, 234, 234));
@@ -267,9 +350,16 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtPublicacion.setForeground(new java.awt.Color(100, 100, 100));
         txtPublicacion.setText("Año de publicacion");
         txtPublicacion.setBorder(null);
+        txtPublicacion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPublicacionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPublicacionFocusLost(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Disponibles:");
 
         txtDisponibilidad.setBackground(new java.awt.Color(241, 234, 234));
@@ -277,6 +367,14 @@ public class AgregarMaterial extends javax.swing.JPanel {
         txtDisponibilidad.setForeground(new java.awt.Color(100, 100, 100));
         txtDisponibilidad.setText("Unidades disponibles");
         txtDisponibilidad.setBorder(null);
+        txtDisponibilidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDisponibilidadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDisponibilidadFocusLost(evt);
+            }
+        });
 
         pnlBuscar.setBackground(new java.awt.Color(241, 234, 234));
 
@@ -646,7 +744,7 @@ public class AgregarMaterial extends javax.swing.JPanel {
                     .addComponent(pnlModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -722,6 +820,258 @@ public class AgregarMaterial extends javax.swing.JPanel {
             LimpiarCajas();
             txtId.requestFocus();
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void txtIdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusGained
+        // TODO add your handling code here:
+        if(txtId.getText().equals("Ingrese el Id Interno"))
+        {
+            txtId.setText("");
+            txtId.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtIdFocusGained
+
+    private void txtIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdFocusLost
+        // TODO add your handling code here:
+        if(txtId.getText().equals(""))
+        {
+            txtId.setText("Ingrese el Id Interno");
+            txtId.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtIdFocusLost
+
+    private void txtTituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTituloFocusGained
+        // TODO add your handling code here:
+        if(txtTitulo.getText().equals("Ingrese el titulo"))
+        {
+            txtTitulo.setText("");
+            txtTitulo.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtTituloFocusGained
+
+    private void txtTituloFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTituloFocusLost
+        // TODO add your handling code here:
+        if(txtTitulo.getText().equals(""))
+        {
+            txtTitulo.setText("Ingrese el titulo");
+            txtTitulo.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtTituloFocusLost
+
+    private void txtDirectorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirectorFocusGained
+        // TODO add your handling code here:
+        if(txtDirector.getText().equals("Ingrese el director"))
+        {
+            txtDirector.setText("");
+            txtDirector.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDirectorFocusGained
+
+    private void txtDirectorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirectorFocusLost
+        // TODO add your handling code here:
+        if(txtDirector.getText().equals(""))
+        {
+            txtDirector.setText("Ingrese el director");
+            txtDirector.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDirectorFocusLost
+
+    private void txtEditorialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEditorialFocusGained
+        // TODO add your handling code here:
+        if(txtEditorial.getText().equals("Ingrese la editorial"))
+        {
+            txtEditorial.setText("");
+            txtEditorial.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtEditorialFocusGained
+
+    private void txtEditorialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEditorialFocusLost
+        // TODO add your handling code here:
+        if(txtEditorial.getText().equals(""))
+        {
+            txtEditorial.setText("Ingrese la editorial");
+            txtEditorial.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtEditorialFocusLost
+
+    private void txtUniFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUniFocusGained
+        // TODO add your handling code here:
+        if(txtUni.getText().equals("nombre de Universidad"))
+        {
+            txtUni.setText("");
+            txtUni.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtUniFocusGained
+
+    private void txtAlbumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAlbumFocusGained
+        // TODO add your handling code here:
+         if(txtAlbum.getText().equals("Ingrese el nombre del Album"))
+        {
+            txtAlbum.setText("");
+            txtAlbum.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtAlbumFocusGained
+
+    private void txtUniFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUniFocusLost
+        // TODO add your handling code here:
+        if(txtUni.getText().equals(""))
+        {
+            txtUni.setText("nombre de Universidad");
+            txtUni.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtUniFocusLost
+
+    private void txtAlbumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAlbumFocusLost
+        // TODO add your handling code here:
+         if(txtAlbum.getText().equals(""))
+        {
+            txtAlbum.setText("Ingrese el nombre del Album");
+            txtAlbum.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtAlbumFocusLost
+
+    private void txtDuracionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDuracionFocusGained
+        // TODO add your handling code here:
+         if(txtDuracion.getText().equals("Ingrese la duracion"))
+        {
+            txtDuracion.setText("");
+            txtDuracion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDuracionFocusGained
+
+    private void txtDuracionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDuracionFocusLost
+        // TODO add your handling code here:
+         if(txtDuracion.getText().equals(""))
+        {
+            txtDuracion.setText("Ingrese la duracion");
+            txtDuracion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDuracionFocusLost
+
+    private void txtDisponibilidadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisponibilidadFocusGained
+        // TODO add your handling code here:
+         if(txtDisponibilidad.getText().equals("Unidades disponibles"))
+        {
+            txtDisponibilidad.setText("");
+            txtDisponibilidad.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDisponibilidadFocusGained
+
+    private void txtDisponibilidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDisponibilidadFocusLost
+        // TODO add your handling code here:
+         if(txtDisponibilidad.getText().equals(""))
+        {
+            txtDisponibilidad.setText("Unidades disponibles");
+            txtDisponibilidad.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtDisponibilidadFocusLost
+
+    private void txtAutorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAutorFocusGained
+        // TODO add your handling code here:
+         if(txtAutor.getText().equals("Ingrese el autor"))
+        {
+            txtAutor.setText("");
+            txtAutor.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtAutorFocusGained
+
+    private void txtAutorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAutorFocusLost
+        // TODO add your handling code here:
+         if(txtAutor.getText().equals(""))
+        {
+            txtAutor.setText("Ingrese el autor");
+            txtAutor.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtAutorFocusLost
+
+    private void txtPaginasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPaginasFocusGained
+        // TODO add your handling code here:
+         if(txtPaginas.getText().equals("Ingrese el número de páginas"))
+        {
+            txtPaginas.setText("");
+            txtPaginas.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtPaginasFocusGained
+
+    private void txtPaginasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPaginasFocusLost
+        // TODO add your handling code here:
+         if(txtPaginas.getText().equals(""))
+        {
+            txtPaginas.setText("Ingrese el número de páginas");
+            txtPaginas.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtPaginasFocusLost
+
+    private void txtISBNFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtISBNFocusGained
+        // TODO add your handling code here:
+         if(txtISBN.getText().equals("Ingrese el ISBN"))
+        {
+            txtISBN.setText("");
+            txtISBN.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtISBNFocusGained
+
+    private void txtISBNFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtISBNFocusLost
+        // TODO add your handling code here:
+         if(txtISBN.getText().equals(""))
+        {
+            txtISBN.setText("Ingrese el ISBN");
+            txtISBN.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtISBNFocusLost
+
+    private void txtCancionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCancionFocusGained
+        // TODO add your handling code here:
+         if(txtCancion.getText().equals("Ingrese el nombre de la canción"))
+        {
+            txtCancion.setText("");
+            txtCancion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtCancionFocusGained
+
+    private void txtCancionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCancionFocusLost
+        // TODO add your handling code here:
+        if(txtCancion.getText().equals(""))
+        {
+            txtCancion.setText("Ingrese el nombre de la canción");
+            txtCancion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtCancionFocusLost
+
+    private void txtCantanteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantanteFocusGained
+        // TODO add your handling code here:
+         if(txtCantante.getText().equals("Ingrese el nombre del cantante"))
+        {
+            txtCantante.setText("");
+            txtCantante.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtCantanteFocusGained
+
+    private void txtCantanteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantanteFocusLost
+        // TODO add your handling code here:
+         if(txtCantante.getText().equals(""))
+        {
+            txtCantante.setText("Ingrese el nombre del cantante");
+            txtCantante.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtCantanteFocusLost
+
+    private void txtPublicacionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPublicacionFocusGained
+        // TODO add your handling code here:
+         if(txtPublicacion.getText().equals("Año de publicacion"))
+        {
+            txtPublicacion.setText("");
+            txtPublicacion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtPublicacionFocusGained
+
+    private void txtPublicacionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPublicacionFocusLost
+        // TODO add your handling code here:
+          if(txtPublicacion.getText().equals(""))
+        {
+            txtPublicacion.setText("Año de publicacion");
+            txtPublicacion.setForeground(new Color(100,100,100));
+        }
+    }//GEN-LAST:event_txtPublicacionFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
