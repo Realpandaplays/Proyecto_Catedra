@@ -1,5 +1,4 @@
 package Biblioteca.GUI;
-
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -302,6 +301,9 @@ public class Principal_Admin extends javax.swing.JFrame {
         btnCalcularMora.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnCalcularMora.setText("Calcular mora");
         btnCalcularMora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCalcularMoraMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCalcularMoraMouseEntered(evt);
             }
@@ -600,6 +602,7 @@ public class Principal_Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlCalcularMoraMouseExited
 
     private void btnCalcularMoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMoraMouseEntered
+        
         pnlCalcularMora.setBackground(new Color(0,103,172));
         btnCalcularMora.setForeground(new Color(255,255,255));
     }//GEN-LAST:event_btnCalcularMoraMouseEntered
@@ -608,6 +611,12 @@ public class Principal_Admin extends javax.swing.JFrame {
         pnlCalcularMora.setBackground(new Color(88,139,173));
         btnCalcularMora.setForeground(new Color(187,187,187));
     }//GEN-LAST:event_btnCalcularMoraMouseExited
+
+    private void btnCalcularMoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalcularMoraMouseClicked
+        ConsultarMora libro = new ConsultarMora();
+        libro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCalcularMoraMouseClicked
 
  
     public static void main(String args[]) {
