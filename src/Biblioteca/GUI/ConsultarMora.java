@@ -38,72 +38,76 @@ public class ConsultarMora extends javax.swing.JFrame {
         txtFecha.setText(now.format(DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
     }
     
-    private void cargarTablaPrestamoMora(){
-    LocalDate fechaActual = LocalDate.now();
-    try {
-        Connection con = ConexionMySQL.obtenerConexion();
-        Statement st = con.createStatement();
-        String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion = ''";
-        ResultSet rs = st.executeQuery(sql);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-        tblTablaPrestamoMora.setRowCount(0); 
-
-        while (rs.next()) {
-            String usuario = rs.getString("usuario");
-            String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
-            LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
-            long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
-
-            if (diasTranscurridos > 4) {
-                double mora = (diasTranscurridos - 4) * 0.25;
-                String tbData[] = {usuario, fechaPrestamo.toString(), "$" + String.valueOf(mora)};
-                tblTablaPrestamoMora.addRow(tbData);
-            }
-        }
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
-        private void cargarTablaPrestamoMoraUsuario() {
+        private void cargarTablaPrestamoMora(){
         LocalDate fechaActual = LocalDate.now();
-        String usuarioIngresado = txtUsuario.getText().trim();
-        double totalMora = 0.0; // Variable para almacenar la suma de moras
-
         try {
             Connection con = ConexionMySQL.obtenerConexion();
             Statement st = con.createStatement();
-            String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion = '' AND usuario = '" + usuarioIngresado + "'";
+            String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL";
             ResultSet rs = st.executeQuery(sql);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
             DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-            tblTablaPrestamoMora.setRowCount(0);
+            tblTablaPrestamoMora.setRowCount(0); 
 
             while (rs.next()) {
                 String usuario = rs.getString("usuario");
-                String fechaPrestamoStr = rs.getString("fechaPrestamo");
-                LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter);
+                String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
+                LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
                 long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
 
                 if (diasTranscurridos > 4) {
                     double mora = (diasTranscurridos - 4) * 0.25;
-                    totalMora += mora; // Sumar la mora al total
-                    String tbData[] = {usuario, fechaPrestamo.toString(), "$" + String.valueOf(mora)};
+                    String tbData[] = {usuario, String.valueOf(diasTranscurridos - 4), fechaPrestamo.toString(), "$" + String.valueOf(mora)};
                     tblTablaPrestamoMora.addRow(tbData);
                 }
             }
-
-            // Mostrar el total de mora en un JTextField
-            txtMoraTotal.setText("$" + String.valueOf(totalMora));
-
             con.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
+            private void cargarTablaPrestamoMoraUsuario() {
+            LocalDate fechaActual = LocalDate.now();
+            String usuarioIngresado = txtUsuario.getText().trim();
+            double totalMora = 0.0;
+
+            try {
+                Connection con = ConexionMySQL.obtenerConexion();
+                Statement st = con.createStatement();
+                String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND usuario = '" + usuarioIngresado + "'";
+                ResultSet rs = st.executeQuery(sql);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+                DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
+                tblTablaPrestamoMora.setRowCount(0);
+
+                while (rs.next()) {
+                    String usuario = rs.getString("usuario");
+                    String fechaPrestamoStr = rs.getString("fechaPrestamo");
+                    LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter);
+                    long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
+
+                    if (diasTranscurridos > 4) {
+                        long diasConMora = diasTranscurridos - 4;
+                        double mora = diasConMora * 0.25;
+                        totalMora += mora;
+                        String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasConMora), "$" + String.valueOf(mora)};
+                        tblTablaPrestamoMora.addRow(tbData);
+                    }
+                }
+
+                txtMoraTotal.setText("$" + String.valueOf(totalMora));
+
+                con.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+
 
     
     
@@ -142,22 +146,23 @@ public class ConsultarMora extends javax.swing.JFrame {
         pnlEncabezadoLayout.setHorizontalGroup(
             pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
-                .addGap(277, 277, 277)
-                .addComponent(jLabel10)
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addGap(287, 287, 287)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addGap(312, 312, 312)
+                        .addComponent(jLabel10)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlEncabezadoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154))
         );
         pnlEncabezadoLayout.setVerticalGroup(
             pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEncabezadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(txtFecha)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -165,12 +170,12 @@ public class ConsultarMora extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre de usuario", "Fecha de préstamo", "Mora actual"
+                "Nombre de usuario", "Fecha de préstamo", "Días transcurridos con mora", "Mora actual"
             }
         ));
         jScrollPane1.setViewportView(jTable);
 
-        jLabel1.setText("Buscar la mora que posee un único usuario:");
+        jLabel1.setText("Buscar la mora que posee un usuario:");
 
         btnRegresar.setBackground(new java.awt.Color(197, 197, 197));
         btnRegresar.setForeground(new java.awt.Color(66, 64, 64));
@@ -214,61 +219,61 @@ public class ConsultarMora extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(592, 592, 592)
-                .addComponent(btnBuscar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                                .addGap(35, 35, 35))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtMoraTotal)
                                 .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txtUsuario)
-                                .addContainerGap())
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
+                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUsuario))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnBuscar1))
-                        .addGap(0, 14, Short.MAX_VALUE))))
+                                .addGap(75, 75, 75)
+                                .addComponent(btnBuscar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnBuscar1)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(btnBuscar)
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtMoraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBuscar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(11, 11, 11)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
