@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 17-05-2024 a las 17:05:20
+-- Tiempo de generación: 18-05-2024 a las 16:01:22
 -- Versión del servidor: 8.2.0
 -- Versión de PHP: 8.2.13
 
@@ -24,32 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `material`
---
-
-DROP TABLE IF EXISTS `material`;
-CREATE TABLE IF NOT EXISTS `material` (
-  `idInterno` varchar(45) NOT NULL,
-  `titulo` varchar(45) NOT NULL,
-  `uniDisp` int NOT NULL,
-  `materialEscrito` varchar(45) NOT NULL,
-  `materialAudio` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `materialaudiovisual`
 --
 
 DROP TABLE IF EXISTS `materialaudiovisual`;
 CREATE TABLE IF NOT EXISTS `materialaudiovisual` (
-  `idInterno` varchar(45) NOT NULL,
-  `titulo` varchar(45) NOT NULL,
-  `uniDisp` int NOT NULL,
-  `id_documental` varchar(45) NOT NULL,
-  `id_musica` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idInterno` varchar(45) DEFAULT NULL,
+  `titulo` varchar(45) DEFAULT NULL,
+  `uniDisp` int DEFAULT NULL,
+  `id_documental` varchar(45) DEFAULT NULL,
+  `id_musica` varchar(45) DEFAULT NULL,
+  `IdMaterialAudio` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdMaterialAudio`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -59,22 +46,23 @@ CREATE TABLE IF NOT EXISTS `materialaudiovisual` (
 
 DROP TABLE IF EXISTS `materiales`;
 CREATE TABLE IF NOT EXISTS `materiales` (
-  `idInterno` varchar(45) NOT NULL,
-  `titulo` varchar(45) NOT NULL,
-  `autor` varchar(45) NOT NULL,
-  `director` varchar(45) NOT NULL,
-  `numPaginas` int NOT NULL,
-  `editorial` varchar(45) NOT NULL,
-  `ISBN` varchar(45) NOT NULL,
-  `universidad` varchar(45) NOT NULL,
-  `tituloCancion` varchar(45) NOT NULL,
-  `tituloAlbum` varchar(45) NOT NULL,
-  `cantante` varchar(45) NOT NULL,
-  `duracion` varchar(45) NOT NULL,
-  `publicacion` varchar(45) NOT NULL,
-  `disponibilidad` int NOT NULL,
-  PRIMARY KEY (`idInterno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idInterno` varchar(45) DEFAULT NULL,
+  `titulo` varchar(45) DEFAULT NULL,
+  `autor` varchar(45) DEFAULT NULL,
+  `director` varchar(45) DEFAULT NULL,
+  `numPaginas` int DEFAULT NULL,
+  `editorial` varchar(45) DEFAULT NULL,
+  `ISBN` varchar(45) DEFAULT NULL,
+  `universidad` varchar(45) DEFAULT NULL,
+  `tituloCancion` varchar(45) DEFAULT NULL,
+  `tituloAlbum` varchar(45) DEFAULT NULL,
+  `cantante` varchar(45) DEFAULT NULL,
+  `duracion` varchar(45) DEFAULT NULL,
+  `publicacion` varchar(45) DEFAULT NULL,
+  `disponibillidad` int DEFAULT NULL,
+  `IdMateriales` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdMateriales`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -84,14 +72,16 @@ CREATE TABLE IF NOT EXISTS `materiales` (
 
 DROP TABLE IF EXISTS `materialescrito`;
 CREATE TABLE IF NOT EXISTS `materialescrito` (
-  `idInterno` varchar(45) NOT NULL,
-  `titulo` varchar(45) NOT NULL,
-  `uniDisp` int NOT NULL,
-  `id_libro` varchar(45) NOT NULL,
-  `id_revista` varchar(45) NOT NULL,
-  `id_prensa` varchar(45) NOT NULL,
-  `id_tesis` varchar(45) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `idInterno` varchar(45) DEFAULT NULL,
+  `titulo` varchar(45) DEFAULT NULL,
+  `uniDisp` int DEFAULT NULL,
+  `id_libro` varchar(45) DEFAULT NULL,
+  `id_revista` varchar(45) DEFAULT NULL,
+  `id_prensa` varchar(45) DEFAULT NULL,
+  `id_tesis` varchar(45) DEFAULT NULL,
+  `IdMaterialEscrito` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdMaterialEscrito`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -101,13 +91,41 @@ CREATE TABLE IF NOT EXISTS `materialescrito` (
 
 DROP TABLE IF EXISTS `prestamos`;
 CREATE TABLE IF NOT EXISTS `prestamos` (
-  `Identificacion` varchar(45) NOT NULL,
-  `usuario` varchar(45) NOT NULL,
-  `privilegio` varchar(45) NOT NULL,
-  `idInterno` varchar(45) NOT NULL,
-  `fechaPrestamo` varchar(45) NOT NULL COMMENT 'yyyy-mm-dd',
-  `fecha_devolucion` varchar(15) NOT NULL COMMENT 'Campo para fecha de devolucion '
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `identificacion` varchar(45) DEFAULT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `privilegio` varchar(45) DEFAULT NULL,
+  `fechaPrestamo` varchar(45) DEFAULT NULL,
+  `fecha_devolucion` varchar(45) DEFAULT NULL,
+  `IdMateriales` int DEFAULT NULL,
+  `IdUsuario` int DEFAULT NULL,
+  `IdPrestamos` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdPrestamos`),
+  KEY `IdMateriales` (`IdMateriales`),
+  KEY `IdUsuario` (`IdUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipomaterial`
+--
+
+DROP TABLE IF EXISTS `tipomaterial`;
+CREATE TABLE IF NOT EXISTS `tipomaterial` (
+  `idInterno` varchar(45) DEFAULT NULL,
+  `titulo` varchar(45) DEFAULT NULL,
+  `uniDisp` int DEFAULT NULL,
+  `materialEscrito` varchar(45) DEFAULT NULL,
+  `materialAudio` varchar(45) DEFAULT NULL,
+  `IdMaterialEscrito` int DEFAULT NULL,
+  `IdMaterialAudio` int DEFAULT NULL,
+  `IdMateriales` int DEFAULT NULL,
+  `IdTipoMaterial` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdTipoMaterial`),
+  KEY `IdMaterialEscrito` (`IdMaterialEscrito`),
+  KEY `IdMaterialAudio` (`IdMaterialAudio`),
+  KEY `IdMateriales` (`IdMateriales`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -117,24 +135,35 @@ CREATE TABLE IF NOT EXISTS `prestamos` (
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `identificacion` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'carnet',
-  `clave` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `nombre` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `apellido` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `usuario` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `nacimiento` varchar(45) NOT NULL COMMENT 'formato yyyy-mm-dd',
-  `privilegio` varchar(45) NOT NULL COMMENT 'Admin, Profesor, Alumno',
-  PRIMARY KEY (`identificacion`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `identificacion` varchar(45) DEFAULT NULL,
+  `clave` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `apellido` varchar(45) DEFAULT NULL,
+  `usuario` varchar(45) DEFAULT NULL,
+  `nacimiento` varchar(45) DEFAULT NULL,
+  `privilegio` varchar(45) DEFAULT NULL,
+  `IdUsuario` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`IdUsuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Restricciones para tablas volcadas
 --
 
-INSERT INTO `usuarios` (`identificacion`, `clave`, `nombre`, `apellido`, `usuario`, `nacimiento`, `privilegio`) VALUES
-('AR230041', '123456789', 'Kevin Oswaldo', 'Alvarez Rosales', 'Realpanda', '2001-02-25', 'Administrador'),
-('AR230054', '123456789', 'Alexander', 'Grande', 'Alexoide', '2001-05-18', 'Profesor'),
-('AR230076', '123456789', 'Israel', 'Zetino', 'Isril', '1990-02-03', 'Estudiante');
+--
+-- Filtros para la tabla `prestamos`
+--
+ALTER TABLE `prestamos`
+  ADD CONSTRAINT `prestamos_ibfk_1` FOREIGN KEY (`IdMateriales`) REFERENCES `materiales` (`IdMateriales`),
+  ADD CONSTRAINT `prestamos_ibfk_2` FOREIGN KEY (`IdUsuario`) REFERENCES `usuarios` (`IdUsuario`);
+
+--
+-- Filtros para la tabla `tipomaterial`
+--
+ALTER TABLE `tipomaterial`
+  ADD CONSTRAINT `tipomaterial_ibfk_1` FOREIGN KEY (`IdMaterialEscrito`) REFERENCES `materialescrito` (`IdMaterialEscrito`),
+  ADD CONSTRAINT `tipomaterial_ibfk_2` FOREIGN KEY (`IdMaterialAudio`) REFERENCES `materialaudiovisual` (`IdMaterialAudio`),
+  ADD CONSTRAINT `tipomaterial_ibfk_3` FOREIGN KEY (`IdMateriales`) REFERENCES `materiales` (`IdMateriales`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
