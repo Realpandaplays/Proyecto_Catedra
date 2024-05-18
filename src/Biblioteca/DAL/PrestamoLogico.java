@@ -44,4 +44,10 @@ public class PrestamoLogico {
             preparedStatement.executeUpdate();
         }
     }
+      
+      public void prestarMaterial(int idMaterial, int idPrestamo) throws SQLException {
+        actualizarDispo(idMaterial);
+        registrarFechaDevolucion(idPrestamo);
+        registrarFechaPrestamo(idPrestamo);
+    }
 }
