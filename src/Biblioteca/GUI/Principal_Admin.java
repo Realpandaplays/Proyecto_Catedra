@@ -98,17 +98,23 @@ public class Principal_Admin extends javax.swing.JFrame {
 
         pnlConsultarMaterial.setBackground(new java.awt.Color(88, 139, 173));
         pnlConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlConsultarMaterialMouseEntered(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pnlConsultarMaterialMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pnlConsultarMaterialMousePressed(evt);
             }
         });
 
         btnConsultarMaterial.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnConsultarMaterial.setText("Consultar material");
         btnConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnConsultarMaterialMouseEntered(evt);
             }
@@ -461,16 +467,6 @@ public class Principal_Admin extends javax.swing.JFrame {
         btnMaterial.setForeground(new Color(187,187,187));
     }//GEN-LAST:event_btnMaterialMouseExited
 
-    private void pnlConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseEntered
-        pnlConsultarMaterial.setBackground(new Color(0,103,172));
-        btnConsultarMaterial.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_pnlConsultarMaterialMouseEntered
-
-    private void pnlConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseExited
-        pnlConsultarMaterial.setBackground(new Color(88,139,173));
-        btnConsultarMaterial.setForeground(new Color(187,187,187));
-    }//GEN-LAST:event_pnlConsultarMaterialMouseExited
-
     private void btnConsultarMaterialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseEntered
         pnlConsultarMaterial.setBackground(new Color(0,103,172));
         btnConsultarMaterial.setForeground(new Color(255,255,255));
@@ -580,6 +576,31 @@ public class Principal_Admin extends javax.swing.JFrame {
         pnlCalcularMora.setBackground(new Color(88,139,173));
         btnCalcularMora.setForeground(new Color(187,187,187));
     }//GEN-LAST:event_btnCalcularMoraMouseExited
+
+    private void btnConsultarMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseClicked
+        // TODO add your handling code here:
+        Consultar consultar = new Consultar();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultarMaterialMouseClicked
+
+    private void pnlConsultarMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseClicked
+        Consultar consultar = new Consultar();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pnlConsultarMaterialMouseClicked
+
+    private void pnlConsultarMaterialMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMousePressed
+        // TODO add your handling code here:
+        Consultar consultar = new Consultar();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pnlConsultarMaterialMousePressed
+
+    private void pnlConsultarMaterialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlConsultarMaterialMouseExited
+        pnlConsultarMaterial.setBackground(new Color(88,139,173));
+        btnConsultarMaterial.setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_pnlConsultarMaterialMouseExited
 
  
     public static void main(String args[]) {
