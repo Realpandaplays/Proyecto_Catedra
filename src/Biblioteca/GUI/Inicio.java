@@ -568,7 +568,7 @@ public class Inicio extends javax.swing.JFrame {
         if(cbxMostrar.isSelected()){
             txtClave.setEchoChar((char)0);
         } else{
-            txtClave.setEchoChar('*');
+            txtClave.setEchoChar('•');
         }
     }//GEN-LAST:event_cbxMostrarMouseClicked
 
