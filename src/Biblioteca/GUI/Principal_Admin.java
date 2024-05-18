@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import Biblioteca.Views.AgregarMaterial;
+import Biblioteca.Views.Prestamo;
 import java.awt.BorderLayout;
 
 /**
@@ -198,6 +199,9 @@ public class Principal_Admin extends javax.swing.JFrame {
         btnPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnPrestamo.setText("Préstamo");
         btnPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrestamoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPrestamoMouseEntered(evt);
             }
@@ -695,6 +699,17 @@ public class Principal_Admin extends javax.swing.JFrame {
         consultar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnConsulPrestamoMouseClicked
+
+    private void btnPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrestamoMouseClicked
+        // TODO add your handling code here:
+        Prestamo pl = new Prestamo();
+        pl.setSize(765,590);
+        pl.setLocation(0,0);
+        Content.removeAll();
+        Content.add(pl, BorderLayout.CENTER);
+        Content.revalidate();
+        Content.repaint();
+    }//GEN-LAST:event_btnPrestamoMouseClicked
 
  
     public static void main(String args[]) {
