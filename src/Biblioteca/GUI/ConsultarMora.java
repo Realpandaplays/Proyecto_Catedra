@@ -68,85 +68,83 @@ public class ConsultarMora extends javax.swing.JFrame {
     }
 
 
-    private void cargarTablaPrestamoMoraUsuario(String usuario) {
-    LocalDate fechaActual = LocalDate.now();
-    double totalMora = 0.0;
-        try {
-            Connection con = ConexionMySQL.obtenerConexion();
-            Statement st = con.createStatement();
-            String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND usuario = ?";
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, usuario);
-            ResultSet rs = pstmt.executeQuery();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            private void cargarTablaPrestamoMoraUsuario(String usuario) {
+            LocalDate fechaActual = LocalDate.now();
+            double totalMora = 0.0;
+                try {
+                    Connection con = ConexionMySQL.obtenerConexion();
+                    Statement st = con.createStatement();
+                    String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND usuario = ?";
+                    PreparedStatement pstmt = con.prepareStatement(sql);
+                    pstmt.setString(1, usuario);
+                    ResultSet rs = pstmt.executeQuery();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-            DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-            tblTablaPrestamoMora.setRowCount(0);
+                    DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
+                    tblTablaPrestamoMora.setRowCount(0);
 
-                if (rs.next()){
+                        if (rs.next()){
 
-                    do {
-                        String fechaPrestamoStr = rs.getString("fechaPrestamo");
-                        LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter);
-                        long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
+                            do {
+                                String fechaPrestamoStr = rs.getString("fechaPrestamo");
+                                LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter);
+                                long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
 
-                            if (diasTranscurridos > 4) {
-                                long diasConMora = diasTranscurridos - 4;
-                                double mora = diasConMora * 0.25;
-                                totalMora += mora;
-                                String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasConMora), "$" + String.valueOf(mora)};
-                                tblTablaPrestamoMora.addRow(tbData);
-                            }
-                    }while (rs.next());
-                    txtMoraTotal.setText("$" + String.valueOf(totalMora));
-                }else{
-                    JOptionPane.showMessageDialog(null, "El usuario no existe", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
+                                    if (diasTranscurridos > 4) {
+                                        long diasConMora = diasTranscurridos - 4;
+                                        double mora = diasConMora * 0.25;
+                                        totalMora += mora;
+                                        String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasConMora), "$" + String.valueOf(mora)};
+                                        tblTablaPrestamoMora.addRow(tbData);
+                                    }
+                            }while (rs.next());
+                            txtMoraTotal.setText("$" + String.valueOf(totalMora));
+                        }else{
+                            JOptionPane.showMessageDialog(null, "El usuario no existe", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
+                        }
+                    con.close();
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            con.close();
-        }catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-}
-    private void cargarTablaPrestamoMoraAno(String año){
-    LocalDate fechaActual = LocalDate.now();
-    try {
-        Connection con = ConexionMySQL.obtenerConexion();
-        String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND YEAR(fechaPrestamo) = ?";
-        PreparedStatement pstmt = con.prepareStatement(sql);
-        pstmt.setString(1, año);
-        ResultSet rs = pstmt.executeQuery();  
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-        tblTablaPrestamoMora.setRowCount(0); 
+            private void cargarTablaPrestamoMoraAno(String año){
+            LocalDate fechaActual = LocalDate.now();
+            try {
+                Connection con = ConexionMySQL.obtenerConexion();
+                String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND YEAR(fechaPrestamo) = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, año);
+                ResultSet rs = pstmt.executeQuery();  
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
+                tblTablaPrestamoMora.setRowCount(0); 
 
 
-        if (!rs.next()) {
-            JOptionPane.showMessageDialog(null, "No hay registros para el año " + año, "Sin registros", JOptionPane.INFORMATION_MESSAGE);
-            con.close();
-            return; 
-        }
+                if (!rs.next()) {
+                    JOptionPane.showMessageDialog(null, "No hay registros para el año " + año, "Sin registros", JOptionPane.INFORMATION_MESSAGE);
+                    con.close();
+                    return; 
+                }
 
- 
-        do {
-            String usuario = rs.getString("usuario");
-            String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
-            LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
-            long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
 
-            if (diasTranscurridos > 4) {
-                double mora = (diasTranscurridos - 4) * 0.25;
-                String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasTranscurridos - 4), "$" + String.valueOf(mora)};
-                tblTablaPrestamoMora.addRow(tbData);
+                do {
+                    String usuario = rs.getString("usuario");
+                    String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
+                    LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
+                    long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
+
+                    if (diasTranscurridos > 4) {
+                        double mora = (diasTranscurridos - 4) * 0.25;
+                        String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasTranscurridos - 4), "$" + String.valueOf(mora)};
+                        tblTablaPrestamoMora.addRow(tbData);
+                    }
+                } while (rs.next());
+
+                con.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } while (rs.next());
-
-        con.close();
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-    }
-}
-
- 
+        }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
