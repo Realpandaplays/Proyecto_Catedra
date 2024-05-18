@@ -102,8 +102,11 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         });
 
         btnMiPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btnMiPrestamo.setText("Consultar mi material");
+        btnMiPrestamo.setText("Consultar Prestamos");
         btnMiPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMiPrestamoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMiPrestamoMouseEntered(evt);
             }
@@ -117,8 +120,8 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         pnlMiPrestamoLayout.setHorizontalGroup(
             pnlMiPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiPrestamoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(btnMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlMiPrestamoLayout.setVerticalGroup(
@@ -136,8 +139,9 @@ public class Principal_Estudiante extends javax.swing.JFrame {
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +280,13 @@ public class Principal_Estudiante extends javax.swing.JFrame {
     private void pnlMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlMenuMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlMenuMouseEntered
+
+    private void btnMiPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMiPrestamoMouseClicked
+        // TODO add your handling code here:
+        Consultar consultar = new Consultar();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMiPrestamoMouseClicked
 
 
     public static void main(String args[]) {

@@ -76,7 +76,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="pnlMaterial" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="pnlMaterial" alignment="0" pref="185" max="32767" attributes="0"/>
                           <Component id="pnlAgregarMat" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -185,6 +185,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Consultar material"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsultarMaterialMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

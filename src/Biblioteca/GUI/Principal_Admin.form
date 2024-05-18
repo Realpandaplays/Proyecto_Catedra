@@ -74,17 +74,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="pnlCalcularMora" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="pnlConfPrestamo" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="pnlDevolver" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pnlPrestar" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pnlAgregarMat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="pnlMaterial" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
-                                  <Component id="pnlConsultarMaterial" alignment="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="pnlConsulPrestamo" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="pnlConfPrestamo" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="pnlDevolver" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlPrestar" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlAgregarMat" alignment="0" max="32767" attributes="0"/>
+                          <Component id="pnlMaterial" alignment="0" min="-2" pref="168" max="-2" attributes="0"/>
+                          <Component id="pnlConsultarMaterial" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="pnlConsulPrestamo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="31" max="32767" attributes="0"/>
                   </Group>
@@ -388,6 +384,7 @@
                     <Property name="text" type="java.lang.String" value="Consultar pr&#xe9;stamos"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsulPrestamoMouseClicked"/>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsulPrestamoMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnConsulPrestamoMouseExited"/>
                   </Events>

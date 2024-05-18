@@ -84,6 +84,11 @@ public class Principal_Profesor extends javax.swing.JFrame {
 
         btnConsultarMaterial.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         btnConsultarMaterial.setText("Consultar material");
+        btnConsultarMaterial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarMaterialMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlConsultarMaterialLayout = new javax.swing.GroupLayout(pnlConsultarMaterial);
         pnlConsultarMaterial.setLayout(pnlConsultarMaterialLayout);
@@ -216,7 +221,7 @@ public class Principal_Profesor extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(pnlMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(pnlAgregarMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
                         .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -362,6 +367,13 @@ public class Principal_Profesor extends javax.swing.JFrame {
         pnlAgregarMat.setBackground(new Color(88,139,173));
         btnAgregarMat.setForeground(new Color(187,187,187));
     }//GEN-LAST:event_pnlAgregarMatMouseExited
+
+    private void btnConsultarMaterialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMaterialMouseClicked
+        // TODO add your handling code here:
+        ConsultarProfe consultar = new ConsultarProfe();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultarMaterialMouseClicked
 
     /**
      * @param args the command line arguments
