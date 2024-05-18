@@ -36,4 +36,12 @@ public class PrestamoLogico {
         }
     }
      
+      public void registrarFechaDevolucion(int idPrestamos) throws SQLException {
+        String query = "UPDATE prestamos SET fecha_devolucion = CURRENT_DATE WHERE IdPrestamos = ?";
+        try (Connection connection = ConexionMySQL.obtenerConexion();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, idPrestamos);
+            preparedStatement.executeUpdate();
+        }
+    }
 }
