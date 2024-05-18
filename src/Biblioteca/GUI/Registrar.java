@@ -30,6 +30,7 @@ public class Registrar extends javax.swing.JFrame {
     }
     public Registrar() {
         initComponents();
+        txtClave.setEchoChar((char)0);
     }
 
     @SuppressWarnings("unchecked")
@@ -105,9 +106,16 @@ public class Registrar extends javax.swing.JFrame {
 
         txtCarnet.setBackground(new java.awt.Color(197, 197, 197));
         txtCarnet.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtCarnet.setForeground(new java.awt.Color(0, 0, 0));
         txtCarnet.setText("Ingrese su carnet");
         txtCarnet.setBorder(null);
+        txtCarnet.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCarnetFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCarnetFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(66, 64, 64));
@@ -115,9 +123,16 @@ public class Registrar extends javax.swing.JFrame {
 
         txtUsuario.setBackground(new java.awt.Color(197, 197, 197));
         txtUsuario.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setText("Ingrese su usuario");
         txtUsuario.setBorder(null);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusLost(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(66, 64, 64));
@@ -125,9 +140,16 @@ public class Registrar extends javax.swing.JFrame {
 
         txtNombre.setBackground(new java.awt.Color(197, 197, 197));
         txtNombre.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtNombre.setForeground(new java.awt.Color(0, 0, 0));
         txtNombre.setText("Ingrese su nombre");
         txtNombre.setBorder(null);
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreFocusLost(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(66, 64, 64));
@@ -135,9 +157,16 @@ public class Registrar extends javax.swing.JFrame {
 
         txtApellido.setBackground(new java.awt.Color(197, 197, 197));
         txtApellido.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtApellido.setForeground(new java.awt.Color(0, 0, 0));
         txtApellido.setText("Ingrese su apellido");
         txtApellido.setBorder(null);
+        txtApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtApellidoFocusLost(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(66, 64, 64));
@@ -145,14 +174,26 @@ public class Registrar extends javax.swing.JFrame {
 
         txtClave.setBackground(new java.awt.Color(197, 197, 197));
         txtClave.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtClave.setForeground(new java.awt.Color(0, 0, 0));
-        txtClave.setText("jPasswordField1");
+        txtClave.setText("Ingrese su Contraseña");
         txtClave.setBorder(null);
+        txtClave.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtClaveFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtClaveFocusLost(evt);
+            }
+        });
 
         cbxMostrar.setBackground(new java.awt.Color(197, 197, 197));
         cbxMostrar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         cbxMostrar.setForeground(new java.awt.Color(66, 64, 64));
         cbxMostrar.setText("Mostrar");
+        cbxMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxMostrarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(66, 64, 64));
@@ -160,9 +201,16 @@ public class Registrar extends javax.swing.JFrame {
 
         txtCumple.setBackground(new java.awt.Color(197, 197, 197));
         txtCumple.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        txtCumple.setForeground(new java.awt.Color(0, 0, 0));
         txtCumple.setText("yyyy-mm-dd");
         txtCumple.setBorder(null);
+        txtCumple.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCumpleFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCumpleFocusLost(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(66, 64, 64));
@@ -170,12 +218,11 @@ public class Registrar extends javax.swing.JFrame {
 
         cobxPrivilegio.setBackground(new java.awt.Color(197, 197, 197));
         cobxPrivilegio.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        cobxPrivilegio.setForeground(new java.awt.Color(0, 0, 0));
         cobxPrivilegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Administrador", "Profesor", "Estudiante" }));
         cobxPrivilegio.setBorder(null);
 
         pnlGuardar.setBackground(new java.awt.Color(197, 197, 197));
-        pnlGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlGuardarMouseClicked(evt);
@@ -191,7 +238,7 @@ public class Registrar extends javax.swing.JFrame {
         btnGuardar.setForeground(new java.awt.Color(66, 64, 64));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/GUI/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
-        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnGuardarMouseClicked(evt);
@@ -222,7 +269,7 @@ public class Registrar extends javax.swing.JFrame {
         );
 
         pnlRegresar.setBackground(new java.awt.Color(197, 197, 197));
-        pnlRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         pnlRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlRegresarMouseClicked(evt);
@@ -239,7 +286,7 @@ public class Registrar extends javax.swing.JFrame {
         btnRegresar.setForeground(new java.awt.Color(66, 64, 64));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Biblioteca/GUI/imagenes/regresar.png"))); // NOI18N
         btnRegresar.setText("Regresar");
-        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRegresarMouseClicked(evt);
@@ -558,6 +605,126 @@ public class Registrar extends javax.swing.JFrame {
         LimpiarCajas();
         txtCarnet.requestFocus();
     }//GEN-LAST:event_pnlGuardarMouseClicked
+
+    private void txtCarnetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCarnetFocusGained
+        // TODO add your handling code here:
+        if(txtCarnet.getText().equals("Ingrese su carnet"))
+        {
+            txtCarnet.setText("");
+            txtCarnet.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCarnetFocusGained
+
+    private void txtCarnetFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCarnetFocusLost
+        // TODO add your handling code here:
+        if(txtCarnet.getText().equals(""))
+        {
+            txtCarnet.setText("Ingrese su carnet");
+            txtCarnet.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCarnetFocusLost
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        // TODO add your handling code here:
+        if(txtUsuario.getText().equals("Ingrese su usuario"))
+        {
+            txtUsuario.setText("");
+            txtUsuario.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
+        // TODO add your handling code here:
+        if(txtUsuario.getText().equals(""))
+        {
+            txtUsuario.setText("Ingrese su usuario");
+            txtUsuario.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtUsuarioFocusLost
+
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        // TODO add your handling code here:
+        if(txtNombre.getText().equals("Ingrese su nombre"))
+        {
+            txtNombre.setText("");
+            txtNombre.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtNombreFocusGained
+
+    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
+        // TODO add your handling code here:
+        if(txtNombre.getText().equals(""))
+        {
+            txtNombre.setText("Ingrese su nombre");
+            txtNombre.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtNombreFocusLost
+
+    private void txtApellidoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusGained
+        // TODO add your handling code here:
+        if(txtApellido.getText().equals("Ingrese su apellido"))
+        {
+            txtApellido.setText("");
+            txtApellido.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtApellidoFocusGained
+
+    private void txtApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidoFocusLost
+        // TODO add your handling code here:
+        if(txtApellido.getText().equals(""))
+        {
+            txtApellido.setText("Ingrese su apellido");
+            txtApellido.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtApellidoFocusLost
+
+    private void txtClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusGained
+        // TODO add your handling code here:
+        if(String.valueOf(txtClave.getPassword()).equals("Ingrese su Contraseña"))
+        {
+            txtClave.setText("");
+            txtClave.setForeground(new Color(0,0,0));
+            txtClave.setEchoChar('•');
+        }
+    }//GEN-LAST:event_txtClaveFocusGained
+
+    private void txtClaveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtClaveFocusLost
+        // TODO add your handling code here:
+        if(txtClave.getPassword().length<1)
+        {
+            txtClave.setEchoChar((char)0);
+            txtClave.setText("Ingrese su Contraseña");
+            txtClave.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtClaveFocusLost
+
+    private void cbxMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMostrarActionPerformed
+        // TODO add your handling code here:
+        if(cbxMostrar.isSelected())
+        {
+            txtClave.setEchoChar((char)0);
+        }else{
+            txtClave.setEchoChar('•');
+        }
+    }//GEN-LAST:event_cbxMostrarActionPerformed
+
+    private void txtCumpleFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCumpleFocusGained
+        // TODO add your handling code here:
+        if(txtCumple.getText().equals("yyyy-mm-dd"))
+        {
+            txtCumple.setText("");
+            txtCumple.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCumpleFocusGained
+
+    private void txtCumpleFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCumpleFocusLost
+        // TODO add your handling code here:
+        if(txtCumple.getText().equals(""))
+        {
+            txtCumple.setText("yyyy-mm-dd");
+            txtCumple.setForeground(new Color(0,0,0));
+        }
+    }//GEN-LAST:event_txtCumpleFocusLost
 
    
     public static void main(String args[]) {
