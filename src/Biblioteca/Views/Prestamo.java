@@ -4,7 +4,10 @@
  */
 package Biblioteca.Views;
 
+import Biblioteca.POJOS.Usuarios;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -375,6 +378,18 @@ public class Prestamo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+       private void LimpiarCajas(){
+        
+        txtCarnet.setText(null);
+        txtTitulo.setText(null);
+        txtAutor1.setText(null);
+        txtDisponibilidad.setText(null);
+        txtNombre.setText(null);
+        txtApellido.setText(null);
+        bmbxMaterial.setSelectedItem("");
+        
+    }
+    
     private void txtAutorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAutorFocusGained
         // TODO add your handling code here:
         if(txtAutor.getText().equals("Ingrese el autor"))
@@ -466,19 +481,35 @@ public class Prestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDisponibilidadFocusLost
 
     private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
-        if (txtId.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El campo Codigo no puede estar en blanco.", "Error",
-                JOptionPane.ERROR_MESSAGE);
-        } else if (!MaterialCD.localizarMaterialCD(txtId.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "No existe este codigo, resgistrado"
-                + "\n Imposible eliminar",
-                "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            CD = MaterialCD.seleccionarMaterialCD(txtId.getText().trim());
-            cargarCajas(CD);
-            txtId.setEnabled(false);
-            btnNuevo.requestFocus();
+
+        if (txtId.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Id no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (txtCarnet.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo Carnet no puede quedar en blanco",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else{
+            String identificacion = txtId.getText();
+            String usuario = txtCarnet.getText();
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String clave = new String (txtClave.getPassword());
+            String nacimiento = txtCumple.getText();
+            String privilegio = (String) cobxPrivilegio.getSelectedItem();
+            
+            Usuarios registro = new Usuarios (identificacion, clave, nombre, apellido, usuario, nacimiento, privilegio);
+                    
+            if(registrar.RegistrarUser(registro)){
+                JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente",
+                        "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se pudo registrar usuario",
+                        "Registro fallido", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
+        LimpiarCajas();
+        txtCarnet.requestFocus();
+
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered

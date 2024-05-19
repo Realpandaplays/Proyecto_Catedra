@@ -4,6 +4,8 @@ package Biblioteca.DAL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,9 +47,34 @@ public class PrestamoLogico {
         }
     }
       
-      public void prestarMaterial(int idMaterial, int idPrestamo) throws SQLException {
+      public boolean agregarPrestamo(int idPrestamos) throws SQLException{
+           boolean rowUpdated = false;
+           try {
+            String sql = "INSERT INTO prestamos SELECT usuario,privilegio,IdUsuario from usuarios WHERE IdUsuario = ?"
+                    
+                    + "INSERT INTO prestamos SELECT IdMateriales from materiales WHERE IdInterno = ?";
+
+                    
+            
+            
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            
+                        
+            rowUpdated = statement.executeUpdate()>0;
+            statement.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(InventarioMaterial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rowUpdated;
+      }
+              
+      public void prestarMaterial(int idMaterial, int idPrestamo, int idPrestamos) throws SQLException {
         actualizarDispo(idMaterial);
         registrarFechaDevolucion(idPrestamo);
         registrarFechaPrestamo(idPrestamo);
+        agregarPrestamo(idPrestamo);
     }
+      
+      
+      
 }
