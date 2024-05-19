@@ -55,15 +55,13 @@ public class PrestamoLogico {
                     + "INSERT INTO prestamos SELECT IdMateriales from materiales WHERE IdInterno = ?";
 
                     
-            
-            
+                      
             PreparedStatement statement = conexion.prepareStatement(sql);
-            
-                        
+                                    
             rowUpdated = statement.executeUpdate()>0;
             statement.close();
         }catch (SQLException ex) {
-            Logger.getLogger(InventarioMaterial.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PrestamoLogico.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rowUpdated;
       }
@@ -72,7 +70,7 @@ public class PrestamoLogico {
         actualizarDispo(idMaterial);
         registrarFechaDevolucion(idPrestamo);
         registrarFechaPrestamo(idPrestamo);
-        agregarPrestamo(idPrestamo);
+        agregarPrestamo(idPrestamos);
     }
       
       
