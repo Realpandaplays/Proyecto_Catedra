@@ -11,17 +11,14 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Biblioteca.DAL.ConexionMySQL;
-import Biblioteca.DAL.PrestamoLogico;
-import Biblioteca.POJOS.Prestamos;
 import java.awt.Color;
 import java.awt.Font;
 /**
  *
  * @author kevin
  */
-public class Consultar extends javax.swing.JFrame {
-    private PrestamoLogico prestamoclase = new PrestamoLogico ((Connection) ConexionMySQL.obtenerConexion());
-    private Prestamos prestamos = null;
+public class ConsultarProfe extends javax.swing.JFrame {
+
     /**
      * Creates new form Consultar
      */
@@ -31,7 +28,7 @@ public class Consultar extends javax.swing.JFrame {
      */
     
 
-    public Consultar() {
+    public ConsultarProfe() {
         initComponents();
         cargarTableUsuarios();
     }
@@ -70,7 +67,7 @@ public class Consultar extends javax.swing.JFrame {
     
     }
     
-     private void cargarTablePrestamos(){
+    private void cargarTablePrestamos(){
     try{
          Connection con = ConexionMySQL.obtenerConexion();
          
@@ -137,7 +134,6 @@ public class Consultar extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(896, 640));
 
         pnlEncabezado.setBackground(new java.awt.Color(70, 119, 152));
 
@@ -336,8 +332,8 @@ public class Consultar extends javax.swing.JFrame {
 
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
 
-        Principal_Estudiante estudiante = new Principal_Estudiante();
-        estudiante.setVisible(true);
+        Principal_Admin admin = new Principal_Admin();
+        admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarMouseClicked
 
@@ -392,20 +388,23 @@ public class Consultar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Consultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Consultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Consultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Consultar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarProfe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Consultar().setVisible(true);
+                new ConsultarProfe().setVisible(true);
             }
         });
     }

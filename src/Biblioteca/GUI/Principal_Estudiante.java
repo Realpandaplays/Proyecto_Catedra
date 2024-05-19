@@ -43,9 +43,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JLabel();
         Content = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,8 +102,11 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         });
 
         btnMiPrestamo.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        btnMiPrestamo.setText("Consultar mi material");
+        btnMiPrestamo.setText("Consultar Prestamos");
         btnMiPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMiPrestamoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnMiPrestamoMouseEntered(evt);
             }
@@ -120,7 +120,7 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         pnlMiPrestamoLayout.setHorizontalGroup(
             pnlMiPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMiPrestamoLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(5, 5, 5)
                 .addComponent(btnMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -139,8 +139,9 @@ public class Principal_Estudiante extends javax.swing.JFrame {
             .addGroup(pnlMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlMiPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlConsultarMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         pnlMenuLayout.setVerticalGroup(
             pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,54 +187,31 @@ public class Principal_Estudiante extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Content.setBackground(new java.awt.Color(142, 144, 145));
-
-        jLabel2.setFont(new java.awt.Font("Heebo", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(66, 64, 64));
-        jLabel2.setText("En esta librería podrás encontrar materiales como \"Libros\", \"Revistas\",");
-
-        jLabel3.setFont(new java.awt.Font("Heebo", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(66, 64, 64));
-        jLabel3.setText(" \"Documentales\", \"Tesis\", \"Prensas\", \"Música\". ");
-
-        jLabel4.setFont(new java.awt.Font("Heebo", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(66, 64, 64));
-        jLabel4.setText("Por favor llenar los espacios correspondientes al material seleccionado.");
+        Content.setBackground(new java.awt.Color(241, 234, 234));
 
         javax.swing.GroupLayout ContentLayout = new javax.swing.GroupLayout(Content);
         Content.setLayout(ContentLayout);
         ContentLayout.setHorizontalGroup(
             ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContentLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addContainerGap(19, Short.MAX_VALUE))
+            .addGap(0, 680, Short.MAX_VALUE)
         );
         ContentLayout.setVerticalGroup(
             ContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ContentLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlBgLayout = new javax.swing.GroupLayout(pnlBg);
         pnlBg.setLayout(pnlBgLayout);
         pnlBgLayout.setHorizontalGroup(
             pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(pnlBgLayout.createSequentialGroup()
                 .addGap(190, 190, 190)
                 .addGroup(pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(pnlBgLayout.createSequentialGroup()
+                .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlBgLayout.setVerticalGroup(
             pnlBgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,6 +281,13 @@ public class Principal_Estudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pnlMenuMouseEntered
 
+    private void btnMiPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMiPrestamoMouseClicked
+        // TODO add your handling code here:
+        Consultar consultar = new Consultar();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMiPrestamoMouseClicked
+
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -356,9 +341,6 @@ public class Principal_Estudiante extends javax.swing.JFrame {
     private javax.swing.JLabel btnConsultarMaterial;
     private javax.swing.JLabel btnMiPrestamo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel pnlBg;
     private javax.swing.JPanel pnlConsultarMaterial;
     private javax.swing.JPanel pnlHeader;
