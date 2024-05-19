@@ -11,6 +11,8 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Biblioteca.DAL.ConexionMySQL;
+import Biblioteca.DAL.PrestamoLogico;
+import Biblioteca.POJOS.Prestamos;
 import java.awt.Color;
 import java.awt.Font;
 /**
@@ -18,7 +20,8 @@ import java.awt.Font;
  * @author kevin
  */
 public class Consultar extends javax.swing.JFrame {
-
+    private PrestamoLogico prestamoclase = new PrestamoLogico ((Connection) ConexionMySQL.obtenerConexion());
+    private Prestamos prestamos = null;
     /**
      * Creates new form Consultar
      */
@@ -81,8 +84,8 @@ public class Consultar extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -170,17 +173,22 @@ public class Consultar extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Buscar");
+        btnBuscar.setText("Buscar");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Usuario", "Material ", "Tipo Material", "Fecha Prestamo", "Fecha Devolucion"
+                "Nombre", "Apellido", "Usuario", "Material ", "Fecha Prestamo", "Fecha Devolucion"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -243,9 +251,9 @@ public class Consultar extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextField1)
+                                        .addComponent(txtBuscar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1)))
+                                        .addComponent(btnBuscar)))
                                 .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -268,8 +276,8 @@ public class Consultar extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))
+                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)
                                 .addGap(67, 67, 67)
@@ -322,6 +330,23 @@ public class Consultar extends javax.swing.JFrame {
         btnRegresar.setFont(new Font("Rockwell",Font.BOLD,14));
     }//GEN-LAST:event_jPanel5MouseExited
 
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+        if (txtBuscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo usuario no puede estar en blanco.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if (!prestamoclase.localizarPrestamoUsuario(txtBuscar.getText().trim())) {
+            JOptionPane.showMessageDialog(null, "No existe este usuario, resgistrado"
+                    + "\n Imposible eliminar",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            prestamos = prestamoclase.localizarPrestamoUsuario(txtBuscar.getText().trim());
+            cargarCajas(Libro);
+            txtId.setEnabled(false);
+            btnNuevo.requestFocus();
+        }
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -359,8 +384,8 @@ public class Consultar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableUsuarios;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -373,8 +398,8 @@ public class Consultar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private javax.swing.JPanel pnlEncabezado;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
