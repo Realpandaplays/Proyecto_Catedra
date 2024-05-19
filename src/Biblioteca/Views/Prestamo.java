@@ -482,34 +482,7 @@ public class Prestamo extends javax.swing.JPanel {
 
     private void btnBuscar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseClicked
 
-        if (txtId.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo Id no puede quedar en blanco",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (txtCarnet.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo Carnet no puede quedar en blanco",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else{
-            String identificacion = txtId.getText();
-            String usuario = txtCarnet.getText();
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            String clave = new String (txtClave.getPassword());
-            String nacimiento = txtCumple.getText();
-            String privilegio = (String) cobxPrivilegio.getSelectedItem();
-            
-            Usuarios registro = new Usuarios (identificacion, clave, nombre, apellido, usuario, nacimiento, privilegio);
-                    
-            if(registrar.RegistrarUser(registro)){
-                JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente",
-                        "Registro Exitoso", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se pudo registrar usuario",
-                        "Registro fallido", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        LimpiarCajas();
-        txtCarnet.requestFocus();
-
+       
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered
