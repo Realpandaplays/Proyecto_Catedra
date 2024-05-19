@@ -1,16 +1,13 @@
 
 package Biblioteca.GUI;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import Biblioteca.DAL.PrestamoMora;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import Biblioteca.DAL.ConexionMySQL;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
-import java.sql.PreparedStatement;
 import java.util.Locale;
+import java.util.List;
+
 
 /**
  *
@@ -33,117 +30,43 @@ public class ConsultarMora extends javax.swing.JFrame {
         txtFecha.setText(now.format(DateTimeFormatter.ofPattern("'Hoy es' EEEE dd 'de' MMMM 'de' yyyy", spanishLocale)));
     }
     
-        private void cargarTablaPrestamoMora(){
-        LocalDate fechaActual = LocalDate.now();
-            try {
-                Connection con = ConexionMySQL.obtenerConexion();
-                Statement st = con.createStatement();
-                String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL";
-                ResultSet rs = st.executeQuery(sql);
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private void cargarTablaPrestamoMora() {
+        DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
+        tblTablaPrestamoMora.setRowCount(0); 
 
-                DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-                tblTablaPrestamoMora.setRowCount(0); 
+        List<String[]> prestamosConMora = PrestamoMora.obtenerTodosLosPrestamosConMora();
 
-                    while (rs.next()) {
-                        String usuario = rs.getString("usuario");
-                        String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
-                        LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
-                        long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
+            for (String[] fila : prestamosConMora) {
+                tblTablaPrestamoMora.addRow(fila);
+            }
 
-                        if (diasTranscurridos > 4) {
-                            double mora = (diasTranscurridos - 4) * 0.25;
-                            String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasTranscurridos - 4), "$" + String.valueOf(mora)};
-                            tblTablaPrestamoMora.addRow(tbData);
-                        }
-                    }
-                    con.close();
-
-                        if (tblTablaPrestamoMora.getRowCount() == 0){
-                            JOptionPane.showMessageDialog(null, "No hay datos para mostrar en la tabla.", "Información", JOptionPane.INFORMATION_MESSAGE);
-                        }
-            }catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
+            if (tblTablaPrestamoMora.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(null, "No hay datos para mostrar en la tabla.", "Información", JOptionPane.INFORMATION_MESSAGE);
             }
     }
+        
+        private void cargarTablaPrestamoMoraUsuario(String usuario) {
+        DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
+        tblTablaPrestamoMora.setRowCount(0); 
 
+        PrestamoMora.PrestamosConMoraResult resultado = PrestamoMora.obtenerPrestamosConMoraPorUsuario(usuario);
 
-            private void cargarTablaPrestamoMoraUsuario(String usuario) {
-            LocalDate fechaActual = LocalDate.now();
-            double totalMora = 0.0;
-                try {
-                    Connection con = ConexionMySQL.obtenerConexion();
-                    Statement st = con.createStatement();
-                    String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND usuario = ?";
-                    PreparedStatement pstmt = con.prepareStatement(sql);
-                    pstmt.setString(1, usuario);
-                    ResultSet rs = pstmt.executeQuery();
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-                    DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
-                    tblTablaPrestamoMora.setRowCount(0);
-
-                        if (rs.next()){
-
-                            do {
-                                String fechaPrestamoStr = rs.getString("fechaPrestamo");
-                                LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter);
-                                long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
-
-                                    if (diasTranscurridos > 4) {
-                                        long diasConMora = diasTranscurridos - 4;
-                                        double mora = diasConMora * 0.25;
-                                        totalMora += mora;
-                                        String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasConMora), "$" + String.valueOf(mora)};
-                                        tblTablaPrestamoMora.addRow(tbData);
-                                    }
-                            }while (rs.next());
-                            txtMoraTotal.setText("$" + String.valueOf(totalMora));
-                        }else{
-                            JOptionPane.showMessageDialog(null, "El usuario no existe", "Usuario no encontrado", JOptionPane.WARNING_MESSAGE);
-                        }
-                    con.close();
-                }catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-                }
+        for (String[] fila : resultado.prestamosConMora) {
+            tblTablaPrestamoMora.addRow(fila);
         }
-            private void cargarTablaPrestamoMoraAno(String año){
-            LocalDate fechaActual = LocalDate.now();
-            try {
-                Connection con = ConexionMySQL.obtenerConexion();
-                String sql = "SELECT usuario, fechaPrestamo FROM prestamos WHERE fecha_devolucion IS NULL AND YEAR(fechaPrestamo) = ?";
-                PreparedStatement pstmt = con.prepareStatement(sql);
-                pstmt.setString(1, año);
-                ResultSet rs = pstmt.executeQuery();  
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        txtMoraTotal.setText("$" + String.valueOf(resultado.totalMora));
+    }
+             
+        private void cargarTablaPrestamoMoraAno(String año) {
                 DefaultTableModel tblTablaPrestamoMora = (DefaultTableModel) jTable.getModel();
                 tblTablaPrestamoMora.setRowCount(0); 
 
+                List<String[]> prestamosConMora = PrestamoMora.obtenerPrestamosConMora(año);
 
-                if (!rs.next()) {
-                    JOptionPane.showMessageDialog(null, "No hay registros para el año " + año, "Sin registros", JOptionPane.INFORMATION_MESSAGE);
-                    con.close();
-                    return; 
-                }
-
-
-                do {
-                    String usuario = rs.getString("usuario");
-                    String fechaPrestamoStr = rs.getString("fechaPrestamo"); 
-                    LocalDate fechaPrestamo = LocalDate.parse(fechaPrestamoStr, formatter); 
-                    long diasTranscurridos = ChronoUnit.DAYS.between(fechaPrestamo, fechaActual);
-
-                    if (diasTranscurridos > 4) {
-                        double mora = (diasTranscurridos - 4) * 0.25;
-                        String tbData[] = {usuario, fechaPrestamo.toString(), String.valueOf(diasTranscurridos - 4), "$" + String.valueOf(mora)};
-                        tblTablaPrestamoMora.addRow(tbData);
+                    for (String[] fila : prestamosConMora) {
+                        tblTablaPrestamoMora.addRow(fila);
                     }
-                } while (rs.next());
-
-                con.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Un error ha ocurrido: " + e, "Error", JOptionPane.ERROR_MESSAGE);
-            }
         }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -369,7 +292,7 @@ public class ConsultarMora extends javax.swing.JFrame {
         txtMoraTotal.setEnabled(false);
         txtMoraTotal.setText(null);
         txtUsuario.setText(null);
-        txtAno.setText(null);
+        txtAno.setText(null); 
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
     private void btnBuscar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar2MouseClicked
