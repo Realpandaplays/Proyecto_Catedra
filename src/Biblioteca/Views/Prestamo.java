@@ -486,15 +486,11 @@ public class Prestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscar1MouseClicked
 
     private void btnBuscar1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseEntered
-        jPanel2.setBackground(new Color(219,211,211));
-        btnBuscar.setForeground(new Color(0,0,0));
-        btnBuscar.setFont(new Font("Rockwell",Font.BOLD,18));
+        
     }//GEN-LAST:event_btnBuscar1MouseEntered
 
     private void btnBuscar1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscar1MouseExited
-        jPanel2.setBackground(new Color(255,255,255));
-        btnBuscar.setForeground(new Color(100,100,100));
-        btnBuscar.setFont(new Font("Rockwell",Font.BOLD,14));
+       
     }//GEN-LAST:event_btnBuscar1MouseExited
 
     private void txtCarnetFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCarnetFocusGained
