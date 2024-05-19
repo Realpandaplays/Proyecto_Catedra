@@ -173,13 +173,13 @@ public class ConsultarProfe extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Usuario", "Material ", "Tipo Material", "Fecha Prestamo", "Fecha Devolucion"
+                "Nombre", "Apellido", "Usuario", "Material ", "Fecha Prestamo", "Fecha Devolucion"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

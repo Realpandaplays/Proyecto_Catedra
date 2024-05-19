@@ -27,7 +27,7 @@ public class InventarioMaterial {
         
         try {
             String sql = "INSERT INTO materiales (idInterno, titulo, autor, director, numPaginas, editorial, ISBN, universidad, tituloCancion"
-                    + "tituloAlbum, cantante, duracion, publicacion, disponibilidad, tipoMaterial)"
+                    + "tituloAlbum, cantante, duracion, publicacion, disponibillidad, tipoMaterial)"
                     + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
           java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
@@ -108,7 +108,7 @@ public class InventarioMaterial {
                 String cantante = resultSet.getString("cantante");
                 String duracion = resultSet.getString("duracion");
                 String publicacion = resultSet.getString("publicacion");
-                int dispo = resultSet.getInt("disponibilidad");
+                int dispo = resultSet.getInt("disponibillidad");
                 String material = resultSet.getString("tipoMaterial");
                 
                 nuevo = new Material (id, titulo, numPaginas, autor, dispo, director, 
@@ -131,7 +131,7 @@ public class InventarioMaterial {
             String sql = "UPDATE libros SET titulo = ?, "
                     + " autor = ?, director = ?, numPaginas = ?, editorial = ?, ISBN = ?,"
                     + " universidad = ?, tituloCancion = ?, tituloAlbum = ?, cantante = ?, "
-                    + "duracion = ?, publicacion = ?, disponibilidad = ?"
+                    + "duracion = ?, publicacion = ?, disponibillidad = ?"
                     + " WHERE idInterno = ?";
             
             PreparedStatement statement = conexion.prepareStatement(sql);
