@@ -70,6 +70,44 @@ public class Consultar extends javax.swing.JFrame {
     
     }
     
+     private void cargarTablePrestamos(){
+    try{
+         Connection con = ConexionMySQL.obtenerConexion();
+         
+         Statement st = con.createStatement();
+         
+         String sql = "Select usuarios.nombre, usuarios.apellido, usuarios.usuario, materiales.titulo, prestamos.fechaPrestamo, prestamos.fecha_devolucion from prestamos INNER JOIN usuarios ON prestamos.IdUsuario =\n" +
+                      "usuarios.IdUsuario INNER JOIN materiales ON prestamos.IdMateriales = materiales.IdMateriales";
+         ResultSet rs = st.executeQuery(sql);
+         
+         while(rs.next()){
+             
+         String nombre = rs.getString("nombre");
+         String apellido = rs.getString("apellido");
+         String usuario = rs.getString("usuario");
+         String titulo = rs.getString("titulo");
+         String fechaprestamo = rs.getString("fechaPrestamo");
+         String fechadevolucion = rs.getString("fecha_devolucion");
+         
+         //Arreglo de datos
+         String tbData[] = {nombre, apellido, usuario, titulo, fechaprestamo, fechadevolucion};
+         DefaultTableModel tblPrestamos = (DefaultTableModel)jTablePrestamos.getModel();
+         
+         //Agregando arreglo a la tabla
+         tblPrestamos.addRow(tbData);  
+         }
+        con.close();
+         
+         }
+         catch(Exception e){
+         
+         JOptionPane.showMessageDialog(null, "un error ha ocurrido"
+                    + e,
+                    "Error", JOptionPane.ERROR_MESSAGE);
+         }
+    
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +125,7 @@ public class Consultar extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePrestamos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -180,18 +218,15 @@ public class Consultar extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nombre", "Apellido", "Usuario", "Material ", "Fecha Prestamo", "Fecha Devolucion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablePrestamos);
 
         jLabel1.setText("Puedes buscar por Usuario");
 
@@ -335,15 +370,8 @@ public class Consultar extends javax.swing.JFrame {
         if (txtBuscar.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "El campo usuario no puede estar en blanco.", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (!prestamoclase.localizarPrestamoUsuario(txtBuscar.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "No existe este usuario, resgistrado"
-                    + "\n Imposible eliminar",
-                    "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            prestamos = prestamoclase.localizarPrestamoUsuario(txtBuscar.getText().trim());
-            cargarCajas(Libro);
-            txtId.setEnabled(false);
-            btnNuevo.requestFocus();
+        } else{
+            cargarTablePrestamos();
         }
     }//GEN-LAST:event_btnBuscarMouseClicked
 
@@ -397,7 +425,7 @@ public class Consultar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePrestamos;
     private java.awt.Label label1;
     private javax.swing.JPanel pnlEncabezado;
     private javax.swing.JTextField txtBuscar;

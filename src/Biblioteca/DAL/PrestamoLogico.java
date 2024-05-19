@@ -1,4 +1,3 @@
-
 package Biblioteca.DAL;
 
 import Biblioteca.POJOS.Prestamos;
@@ -8,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import Biblioteca.POJOS.Prestamos;
 
 /**
  *
@@ -55,26 +55,4 @@ public class PrestamoLogico {
         registrarFechaPrestamo(idPrestamo);
     }
       
-      
-      public boolean localizarPrestamoUsuario (String usuario){
-        boolean encontrado = false;
-        
-        try {
-            String sql = "Select usuarios.nombre, usuarios.apellido, usuarios.usuario, materiales.titulo, prestamos.fechaPrestamo, prestamos.fecha_devolucion from prestamos INNER JOIN usuarios ON prestamos.IdUsuario =\n" +
-"usuarios.IdUsuario INNER JOIN materiales ON prestamos.IdMateriales = materiales.IdMateriales where usuarios.usuario =  ?";
-            java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
-            statement.setString(1, usuario);
-            ResultSet resultSet = statement.executeQuery();
-            
-            if (resultSet.next()) {
-                encontrado = true;
-            }
-
-            resultSet.close();
-            statement.close();
-        } catch (SQLException ex) {
-             Logger.getLogger(Prestamos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return encontrado;
-    }
 }

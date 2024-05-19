@@ -67,6 +67,43 @@ public class ConsultarAdmin extends javax.swing.JFrame {
     
     }
     
+    private void cargarTablePrestamos(){
+    try{
+         Connection con = ConexionMySQL.obtenerConexion();
+         
+         Statement st = con.createStatement();
+         
+         String sql = "Select usuarios.nombre, usuarios.apellido, usuarios.usuario, materiales.titulo, prestamos.fechaPrestamo, prestamos.fecha_devolucion from prestamos INNER JOIN usuarios ON prestamos.IdUsuario =\n" +
+                      "usuarios.IdUsuario INNER JOIN materiales ON prestamos.IdMateriales = materiales.IdMateriales";
+         ResultSet rs = st.executeQuery(sql);
+         
+         while(rs.next()){
+             
+         String nombre = rs.getString("nombre");
+         String apellido = rs.getString("apellido");
+         String usuario = rs.getString("usuario");
+         String titulo = rs.getString("titulo");
+         String fechaprestamo = rs.getString("fechaPrestamo");
+         String fechadevolucion = rs.getString("fecha_devolucion");
+         
+         //Arreglo de datos
+         String tbData[] = {nombre, apellido, usuario, titulo, fechaprestamo, fechadevolucion};
+         DefaultTableModel tblPrestamos = (DefaultTableModel)jTablePrestamos.getModel();
+         
+         //Agregando arreglo a la tabla
+         tblPrestamos.addRow(tbData);  
+         }
+        con.close();
+         
+         }
+         catch(Exception e){
+         
+         JOptionPane.showMessageDialog(null, "un error ha ocurrido"
+                    + e,
+                    "Error", JOptionPane.ERROR_MESSAGE);
+         }
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,10 +118,10 @@ public class ConsultarAdmin extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         btnRegresar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePrestamos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         label1 = new java.awt.Label();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -169,20 +206,22 @@ public class ConsultarAdmin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Buscar");
+        btnBuscar.setText("Buscar");
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseClicked(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Nombre", "Apellido", "Usuario", "Material ", "Fecha Prestamo", "Fecha Devolucion"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablePrestamos);
 
         jLabel1.setText("Puedes buscar por Usuario");
 
@@ -242,9 +281,9 @@ public class ConsultarAdmin extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextField1)
+                                        .addComponent(txtBuscar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton1)))
+                                        .addComponent(btnBuscar)))
                                 .addGap(18, 18, 18))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -267,8 +306,8 @@ public class ConsultarAdmin extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton1))
+                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)
                                 .addGap(67, 67, 67)
@@ -321,6 +360,16 @@ public class ConsultarAdmin extends javax.swing.JFrame {
         btnRegresar.setFont(new Font("Rockwell",Font.BOLD,14));
     }//GEN-LAST:event_jPanel5MouseExited
 
+    private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
+        // TODO add your handling code here:
+         if (txtBuscar.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El campo usuario no puede estar en blanco.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else{
+            cargarTablePrestamos();
+        }
+    }//GEN-LAST:event_btnBuscarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -359,8 +408,8 @@ public class ConsultarAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableUsuarios;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel btnRegresar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -372,9 +421,9 @@ public class ConsultarAdmin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTablePrestamos;
     private java.awt.Label label1;
     private javax.swing.JPanel pnlEncabezado;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
