@@ -6,6 +6,24 @@ package Biblioteca.POJOS;
  */
 public class Material {
 
+    public Material(String idInterno, String titulo, String autor, String director, int numPaginas, String editorial, String ISBN, String universidad, String tituloCancion, String tituloAlbum, String cantante, String duracion, String publicacion, int disponibilidad, String tipoMaterial) {
+        this.idInterno = idInterno;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.director = director;
+        this.numPaginas = numPaginas;
+        this.editorial = editorial;
+        this.ISBN = ISBN;
+        this.universidad = universidad;
+        this.tituloCancion = tituloCancion;
+        this.tituloAlbum = tituloAlbum;
+        this.cantante = cantante;
+        this.duracion = duracion;
+        this.publicacion = publicacion;
+        this.disponibilidad = disponibilidad;
+        this.tipoMaterial = tipoMaterial;
+    }
+    
     private String idInterno;
     private String titulo;
     private String autor;
@@ -161,5 +179,5 @@ public class Material {
     public void setTipoMaterial(String tipoMaterial) {
         this.tipoMaterial = tipoMaterial;
     }
-    
+ 
 }

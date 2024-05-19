@@ -80,6 +80,46 @@ public class InventarioMaterial {
         return encontrado;
     }
     
+    /*Seleccionar un material por su código*/
+    public Material seleccionarMaterial (String idInterno){
+        Material materialPres = null;
+        
+        try {
+            String sql = "SELECT * FROM cd WHERE idInterno = ?";
+            
+            java.sql.PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, idInterno);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            if (resultSet.next()){
+                
+                String id = resultSet.getString("idInterno");
+                String titulo = resultSet.getString("titulo");
+                String autor = resultSet.getString("autor");
+                String director = resultSet.getString("director");
+                int numPaginas = resultSet.getInt("numPaginas");
+                String editorial = resultSet.getString("editorial");
+                String ISBN = resultSet.getString("ISBN");
+                String universidad = resultSet.getString("universidad");
+                String tituloCancion = resultSet.getString("tituloCancion");
+                String tituloAlbum = resultSet.getString("tituloAlbum");
+                String cantante = resultSet.getString("cantante");
+                String duracion = resultSet.getString("duracion");
+                String publicacion = resultSet.getString("publicacion");
+                int disponibilidad = resultSet.getInt("disponibilidad");
+                String tipoMaterial = resultSet.getString("tipoMaterial");
+                materialPres = new Material (id, titulo, autor, director, numPaginas, editorial, ISBN, universidad, tituloCancion, tituloAlbum, cantante, duracion, publicacion, disponibilidad, tipoMaterial);
+            }
+            resultSet.close();
+            statement.close();
+        }catch (SQLException ex) {
+            Logger.getLogger(Material.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+            return materialPres;
+        }
+    
     //Seleccionar material por su código interno
     
     public Material SeleccionarMaterial (String idInterno){
